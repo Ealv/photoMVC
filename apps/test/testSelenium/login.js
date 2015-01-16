@@ -40,7 +40,7 @@ testLogin = function(){
 	});
 
 	test.it('must have a login button', function(){
-		this.timeout(4000);
+		this.timeout(7000);
 		browser.manage().timeouts().implicitlyWait(2000);
 		browser.get('http://localhost:8000');
 
