@@ -21,6 +21,19 @@ grunt.initConfig({
 			src : ['css/app.css']
 		}
 	},
+	jscs: {
+		options: {
+			"disallowEmptyBlocks": true,
+			"disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+			"disallowKeywords": ["with","eval"],
+			"disallowMixedSpacesAndTabs" : true,
+			"disallowMultipleLineBreaks": true,
+			"disallowMultipleLineStrings": true,
+			"disallowMultipleVarDecl": true,
+			"requireCommaBeforeLineBreak" : true
+		},
+		all : ['*/client/**/*.js',"!angular/client/**","!marionette/client/vendors/require/require.js"]
+	},
 	jshint: {
 		options : {
 			reporter : require('jshint-stylish'),
@@ -28,19 +41,24 @@ grunt.initConfig({
 			eqeqeq : true,
 			eqnull : true,
 			browser : true,
-			ignores : ['marionette/client/vendors/require/require.js'],
 			globals : {
 				jQuery : true
 			}
 		},
-		all : ['*/client/**/*.js',"Gruntfile.js"]
+		all : ['*/client/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/client/vendors/require/require.js"]
 	},
 	watch: {
 		less : {
 			files : 'css/*.less',
 			tasks : ['less'],
 			options : {
-				livereload : 35729,
+				livereload : 35729
+			}
+		},
+		configFiles: {
+			files: [ 'Gruntfile.js', 'config/*.js' ],
+			options: {
+				reload: true
 			}
 		},
 		css : {
@@ -49,19 +67,21 @@ grunt.initConfig({
 		},
 		js : {
 			files : ['marionette/client/**/*.js','marionette/client/*.js'],
-			tasks : ['jshint'],
+			tasks : ['jshint','jscs'],
 			options : {
-				livereload : 35729,
+				livereload : 35729
 			}
 		},
 		templates : {
 			files : ['marionette/client/**/*.html','marionette/client/*.html'],
 			options : { 
-				livereload : 35729,
+				livereload : 35729
 			}
 		}
 	}
 });
+
+grunt.loadNpmTasks("grunt-jscs");
 
 grunt.loadNpmTasks('grunt-contrib-less');
 

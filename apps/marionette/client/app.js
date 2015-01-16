@@ -7,7 +7,7 @@ define(['jquery','underscore','backbone','marionette','router'],
 		myApp.initialize = function(){
 			myApp.Router = new Router();
 			myApp.start();
- 			Backbone.history.start();
+			Backbone.history.start();
 		};
 
 		return myApp;

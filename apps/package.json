@@ -11,7 +11,8 @@
     "jshint-stylish": "~1.0.0",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-less": "~1.0.0",
-    "grunt-contrib-csslint": "~0.3.1"
+    "grunt-contrib-csslint": "~0.3.1",
+    "grunt-jscs": "~1.2.0"
   },
   "author": "Eric Alvernhe",
   "license": "BSD-2-Clause"

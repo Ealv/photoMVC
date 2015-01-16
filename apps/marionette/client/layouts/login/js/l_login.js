@@ -10,4 +10,3 @@ function(Marionette,LoginPanel){
 		}
 	};
 });
-

@@ -12,7 +12,7 @@ linkApp.controller('LinkCtrl', function ($scope) {
 	$scope.toto = function(){
 		console.log("tototo");
 		$scope.links[0].name+= "titi";
-	}
+	};
 
 
 	var funcfunc = function() { 
@@ -26,7 +26,7 @@ linkApp.controller('LinkCtrl', function ($scope) {
 		{'name': 'MOTOROLA XOOM™',
 			'snippet': 'The Next, Next Generation tablet.'}
 	];
-	}
+	};
 
 	for (var i in [0,1,2,3])
 		setTimeout(funcfunc, 1000 * i);
