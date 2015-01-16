@@ -1,0 +1,31 @@
+
+@import "variables.less";
+
+@photo-item-width : 120;
+
+.photo-item .img-responsive-inv {
+	max-width: (@photo-item-width * 0.75) * 1px;
+	max-height: (@photo-item-width * 0.75) * 1px;
+}
+.photo-item {
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top : 10px;
+	width: (@photo-item-width) * 1px;
+	height: (@photo-item-width)* 1px;
+}
+
+
+.thumbnail {
+	width: (@photo-item-width - 20) * 1px;
+	height: (@photo-item-width - 20) * 1px;
+}
+
+.thumbnail {
+	background-color: initial;
+}
+
+.photo-item.checked .thumbnail {
+	border-color: (@item-selected-color) * 1px;
+
+}

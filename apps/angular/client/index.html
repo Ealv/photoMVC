@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html  ng-app="linkApp">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="text/javascript" src="./lib/angular.min.js"></script>
+		<script type="text/javascript" src="./app.js"></script>
+	</head>
+
+	<body ng-controller="LinkCtrl">
+	<button ng-click="toto()" >
+  Increment
+</button>
+	  Search : <input ng-model="query">
+		<ul>
+			<li ng-repeat="link in filteredItems = (links | filter:query)">
+				<span>{{link.name}}</span>
+				<p>{{link.snippet}}</p>
+			</li>
+			<li ng-show="!filteredItems.length">No events</li>
+			
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,7 @@
+//admin 
+
+ssh pi@192.168.0.51
+
+
+//cloning
+git clone git@192.168.0.51:web/site1

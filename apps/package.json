@@ -1,0 +1,17 @@
+{
+  "name": "all-photo",
+  "version": "0.0.0",
+  "description": "Try to show photos",
+  "dependencies": {
+    "grunt": "~0.4.5"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.10.0",
+    "jshint-stylish": "~1.0.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-less": "~1.0.0",
+    "grunt-contrib-csslint": "~0.3.1"
+  },
+  "author": "Eric Alvernhe",
+  "license": "BSD-2-Clause"
+}

@@ -1,0 +1,39 @@
+1 install node.js
+	http://nodejs.org/
+
+2 npm install bower (npm comme with node normally)
+
+Dans portfolio
+npm update
+
+cd apps
+bower update
+
+cd marionette
+bower update
+
+cd react
+npm update
+
+//only if you want the react application to debugged
+npm start& //launching react mode watch (n)
+
+
+//launching server
+cd portfolio/server
+node server.js& 
+
+//go to page 
+http://localhost:8000/
+
+
+
+rm -rf node_modules/*
+rm -rf apps/bower_components/*
+rm -rf apps/node_modules/*
+
+rm -rf apps/marionette/node_modules/*
+rm -rf apps/marionette/bower_components/*
+
+
+rm -rf apps/react/node_modules/*

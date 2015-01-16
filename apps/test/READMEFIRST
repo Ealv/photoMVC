@@ -1,0 +1,20 @@
+
+
+server must be launched :
+cd apps
+node index.js
+
+then in test direcory
+npm update
+
+then for zombie test
+mocha testZombie/*
+
+then for casper test
+casperjs test testCasper/*
+
+then for Selenium test
+mocha testSelenium/*
+
+
+

@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "casperjs": "~1.1.0-beta3",
+    "phantomjs": "~1.9.13",
+    "selenium-webdriver": "~2.44.0",
+    "mocha": "~2.1.0",
+    "zombie": "~2.5.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ".git"
+  },
+  "author": "Eric Alvernhe",
+  "license": "BSD-2-Clause"
+}

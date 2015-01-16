@@ -1,0 +1,137 @@
+@import "../bower_components/bootstrap/dist/css/bootstrap.min.css";
+@import "../bower_components/bootstrap/dist/css/bootstrap-theme.min.css";
+/*
+ * Copyright (c) 2014, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * base.css overrides
+ */
+/**
+ * We are not changing from display:none, but rather re-rendering instead.
+ * Therefore this needs to be displayed normally by default.
+ */
+.img-responsive.login {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+@media (max-width: 991px) {
+  #login-button {
+    margin-top: 20px;
+  }
+}
+#header-layout {
+  margin-bottom: 0;
+  height: 40px;
+  min-height: 40px;
+  line-height: 40px;
+  position: static;
+}
+#middle-layout {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  padding: 0;
+}
+#sidebar-layout {
+  width: 20%;
+  height: 100%;
+  position: fixed;
+  background-color: #514d4d;
+  border-right-style: solid;
+  border-right-width: 3px;
+  transform: translateX(0);
+  -webkit-transition: 0.5s ease all;
+  transition: 0.5s ease all;
+}
+.toggle-siderbar {
+  height: 40px;
+  float: left;
+  position: relative;
+  display: inline;
+  margin: 0;
+}
+.icon-bar {
+  background-color: #fff;
+}
+#toggle-inner-siderbar {
+  float: right;
+}
+#main-layout {
+  width: 80%;
+  height: 100%;
+  float: right;
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: #171c1e;
+  overflow: auto;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
+}
+#middle-layout.active #main-layout {
+  width: 100%;
+}
+#middle-layout.active #sidebar-layout {
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+}
+@media (max-width: 767px) {
+  #sidebar-layout {
+    width: 90%;
+    top: 0;
+    height: 100%;
+    z-index: 6;
+  }
+  #main-layout {
+    width: 100%;
+  }
+  #blur-layout {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: 4;
+  }
+  #main-layout {
+    box-shadow: 0 0 0 0 #ffffff;
+    opacity: 0.7;
+  }
+  #middle-layout.active #main-layout {
+    opacity: initial;
+  }
+  #middle-layout.active #blur-layout {
+    width: 0;
+    height: 0;
+  }
+}
+.photo-item .img-responsive-inv {
+  max-width: 90px;
+  max-height: 90px;
+}
+.photo-item {
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 10px;
+  width: 120px;
+  height: 120px;
+}
+.thumbnail {
+  width: 100px;
+  height: 100px;
+}
+.thumbnail {
+  background-color: initial;
+}
+.photo-item.checked .thumbnail {
+  border-color: #207394;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  padding: 0;
+}

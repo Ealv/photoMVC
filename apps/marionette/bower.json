@@ -1,0 +1,24 @@
+{
+  "name": "marionette",
+  "version": "0.0.0",
+  "authors": [
+    "Eric Alvernhe"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "marionette": "~2.2.2",
+    "underscore": "~1.7.0",
+    "text": "~2.0.12"
+  },
+  "resolutions": {
+    "underscore": "~1.7.0"
+  }
+}

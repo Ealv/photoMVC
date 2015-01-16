@@ -1,0 +1,37 @@
+
+
+Front end 
+	Per Library 
+		Localisation
+		Lint/Hint for css js and html.
+		Code Minification
+		Code Uglification
+		Assets minification : {images + css}
+		Routing 
+		Watch process (for dev)
+		Login process (for user usage)
+		Login process (for debug dev and production usage)
+		Authenticate REgister user
+		Lazy Loading
+		UI elements 
+		Architectue/design
+		Debugging process
+		Application native for Android & IOS
+		Personnalisation app 
+		User perferences
+
+	Test Fonctionel (Selenium)
+	Responsive design, Css
+	Protypage maquette Invision balasmaik mockup, protype.io
+Back end
+	Per Library 
+		Routing 
+		TestS API unitaires
+		Architectue/design
+		Dependencies injection
+		DB fetching (mongoDB + sql + ...)
+		Log (
+				->for production debugg monitoring,
+				->for user action monitoring (what user has done ?))
+		Monitoring
+		Security
