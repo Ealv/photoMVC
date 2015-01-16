@@ -37,3 +37,19 @@ rm -rf apps/marionette/bower_components/*
 
 
 rm -rf apps/react/node_modules/*
+
+
+npm update
+bower update
+cd apps
+bower update
+npm update
+
+cd react
+npm install
+
+cd ../marioenette
+npm install
+bower install
+
+
