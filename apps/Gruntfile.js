@@ -32,7 +32,7 @@ grunt.initConfig({
 			"disallowMultipleVarDecl": true,
 			"requireCommaBeforeLineBreak" : true
 		},
-		all : ['*/client/**/*.js',"!angular/client/**","!marionette/client/vendors/require/require.js"]
+		all : ['*/client/**/*.js',"!angular/client/**","!marionette/src/vendors/require/require.js"]
 	},
 	jshint: {
 		options : {
@@ -45,7 +45,7 @@ grunt.initConfig({
 				jQuery : true
 			}
 		},
-		all : ['*/client/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/client/vendors/require/require.js"]
+		all : ['*/client/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/src/vendors/require/require.js"]
 	},
 	watch: {
 		less : {
@@ -66,14 +66,14 @@ grunt.initConfig({
 			tasks : ['csslint']
 		},
 		js : {
-			files : ['marionette/client/**/*.js','marionette/client/*.js'],
+			files : ['marionette/src/**/*.js','marionette/src/*.js'],
 			tasks : ['jshint','jscs'],
 			options : {
 				livereload : 35729
 			}
 		},
 		templates : {
-			files : ['marionette/client/**/*.html','marionette/client/*.html'],
+			files : ['index.html', 'marionette/src/**/*.html','marionette/src/*.html'],
 			options : { 
 				livereload : 35729
 			}

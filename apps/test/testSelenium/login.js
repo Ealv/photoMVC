@@ -24,8 +24,8 @@ var captureScreen = function(browser,name,element) {
 
 var capabilities = {
 	//silent: true, // maybe output more for tests?
-	browserName: 'phantomjs',
-	//browserName: 'firefox',
+	//browserName: 'phantomjs',
+	browserName: 'firefox',
 	javascriptEnabled: true,
 	takesScreenshot: true,
 	databaseEnabled: false,
@@ -40,11 +40,11 @@ testLogin = function(){
 	});
 
 	test.it('must have a login button', function(){
-		this.timeout(7000);
+		this.timeout(9000);
 		browser.manage().timeouts().implicitlyWait(2000);
 		browser.get('http://localhost:8000');
 
-		browser.findElement(driver.By.id('marionette')).click();
+		//browser.findElement(driver.By.id('marionette')).click();
 
 		//login form is ok
 		browser.findElement(driver.By.id('user-input'));
@@ -128,5 +128,5 @@ var onBrowserReady = function ( browserDone ) {
 		throw new Error ('driver not created');
 	browser = browserDone;
 	browser.manage().timeouts().implicitlyWait(1000);
-	browser.manage().window().setSize(1280, 1200);
+	browser.manage().window().setSize(680, 700);
 };

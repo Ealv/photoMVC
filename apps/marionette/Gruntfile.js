@@ -7,8 +7,8 @@ grunt.initConfig({
 	requirejs: {
 		compile: {
 			options: {
-				mainConfigFile : "client/main.js",
-				baseUrl: "client",
+				mainConfigFile : "src/main.js",
+				baseUrl: "src",
 				//appDir: "./",
 				dir: "build",
 				//remove unused files in build directory

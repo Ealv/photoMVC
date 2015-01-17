@@ -1,4 +1,4 @@
-define(['marionette',"l_home","l_login"], 
+define(['marionette',"l_home"], 
 function(Marionette,LayoutLogin,LayoutHome){
 	"use strict";
 
@@ -12,8 +12,8 @@ return {
 	home : function () {
 		myController.draw(require("l_home"));
 		},
-	login : function () {
-		myController.draw(require("l_login"));
+	whatever : function () {
+		myController.draw(require("l_watever"));
 		}
 	};
 });

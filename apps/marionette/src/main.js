@@ -1,7 +1,6 @@
 require.config({
 //	baseUrl: './',
 	paths: {
-		"l_login"			: 'layouts/login/js/l_login',
 		"l_home"			: 'layouts/home/js/l_home',
 		"app"				: './app',
 		"jquery"			: '../bower_components/jquery/dist/jquery',
