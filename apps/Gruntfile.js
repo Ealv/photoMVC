@@ -32,20 +32,22 @@ grunt.initConfig({
 			"disallowMultipleVarDecl": true,
 			"requireCommaBeforeLineBreak" : true
 		},
-		all : ['*/client/**/*.js',"!angular/client/**","!marionette/src/vendors/require/require.js"]
+		all : ['*/src/**/*.js',"!angular/client/**","!marionette/src/vendors/require/require.js"]
 	},
 	jshint: {
 		options : {
 			reporter : require('jshint-stylish'),
+			/*
 			curly : true,
 			eqeqeq : true,
 			eqnull : true,
+			*/
 			browser : true,
 			globals : {
 				jQuery : true
 			}
 		},
-		all : ['*/client/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/src/vendors/require/require.js"]
+		all : ['marionette/src/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/src/vendors/require/require.js"]
 	},
 	watch: {
 		less : {

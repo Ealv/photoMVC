@@ -16,7 +16,8 @@
   "dependencies": {
     "marionette": "~2.2.2",
     "underscore": "~1.7.0",
-    "text": "~2.0.12"
+    "text": "~2.0.12",
+    "handlebars": "~2.0.0"
   },
   "resolutions": {
     "underscore": "~1.7.0"

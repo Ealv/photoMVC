@@ -3,26 +3,34 @@
 Front end 
 	Per Library 
 		Localisation
-		Lint/Hint for css js and html.
 		Code Minification
 		Code Uglification
-		Assets minification : {images + css}
-		Routing 
-		Watch process (for dev)
-		Login process (for user usage)
-		Login process (for debug dev and production usage)
-		Authenticate REgister user
+		Routing
+		Login process : Oauth, phpsessionid...
+		Log /data driven  (for user usage, for debug dev and production usage)
+		Authenticate REgister user User perferences
 		Lazy Loading
 		UI elements 
+		React to event
+		Custom event throw in app
+		Fetch/save delete modify models from server
 		Architectue/design
+		Modular design
+		Testing Unit from each modular functionality
 		Debugging process
-		Application native for Android & IOS
-		Personnalisation app 
-		User perferences
+		WebSoket...or whatever push server method.
 
-	Test Fonctionel (Selenium)
-	Responsive design, Css
-	Protypage maquette Invision balasmaik mockup, protype.io
+	Global solution for front end
+		Lint/Hint for css js and html. OK
+		Test UI (Selenium) for screenshot OK
+		Coverage Code
+		Watch process /reload page(for dev)
+		Responsive Design Cordova/ionics Application native for Android & IOS
+		Enforce Guideline OK
+		Responsive design, Css OK
+		Responsive Design offline
+		Assets minification : {images (sprite) + css}
+		Protypage maquette Invision balasmaik mockup, protype.io 1/2 OK
 Back end
 	Per Library 
 		Routing 
@@ -31,7 +39,7 @@ Back end
 		Dependencies injection
 		DB fetching (mongoDB + sql + ...)
 		Log (
-				->for production debugg monitoring,
-				->for user action monitoring (what user has done ?))
+			->for production debug monitoring,
+			->for user action monitoring (what user has done ?))
 		Monitoring
 		Security

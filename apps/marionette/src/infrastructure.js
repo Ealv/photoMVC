@@ -3,5 +3,6 @@ define([
 	"text",
 	"underscore",
 	"backbone",	
-	"marionette"
+	"marionette",
+	"handlebars"
 ], function() { });

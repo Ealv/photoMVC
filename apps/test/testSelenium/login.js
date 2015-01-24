@@ -24,8 +24,8 @@ var captureScreen = function(browser,name,element) {
 
 var capabilities = {
 	//silent: true, // maybe output more for tests?
-	//browserName: 'phantomjs',
-	browserName: 'firefox',
+	browserName: 'phantomjs',
+	//browserName: 'firefox',
 	javascriptEnabled: true,
 	takesScreenshot: true,
 	databaseEnabled: false,
@@ -128,5 +128,5 @@ var onBrowserReady = function ( browserDone ) {
 		throw new Error ('driver not created');
 	browser = browserDone;
 	browser.manage().timeouts().implicitlyWait(1000);
-	browser.manage().window().setSize(680, 700);
+	browser.manage().window().setSize(1680, 700);
 };

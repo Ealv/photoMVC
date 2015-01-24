@@ -2,20 +2,26 @@
 define([
 	'jquery',
 	'underscore',
+	'backbone',
 	'marionette',
 	// Using the Require.js text! plugin, we are loaded raw text
 	// which will be used as our views primary template
 	'text!../templates/home.html'
-], function($, _, Marionette, HomePanelTemp){
+], function($, _, Backbone,Marionette, HomePanelTemp){
 
 	"use strict";
+	var HomePanel =  Backbone.Marionette.LayoutView.extend({
 
-	var HomePanel = Marionette.View.extend({
-
+		template : HomePanelTemp,
 		ui: {
 			"toggleSiderbarHeader": "#toggle-siderbar-header",
 			"toggleInnerSiderbar": "#toggle-inner-siderbar",
 			"fog": "#blur-layout"
+		},
+
+		regions: {
+			SideBarContent: "#sidebar-layout",
+			mainContent: "#main-layout"
 		},
 
 		events: {
@@ -34,7 +40,7 @@ define([
 			var data = {};
 			var compiledTemplate = _.template( HomePanelTemp, data );
 			this.$el.append( compiledTemplate);
-		}	
+		}
 	});
 	return HomePanel;
 });
