@@ -1,6 +1,23 @@
-require.config({
+var requirejs = require('requirejs');
+
+
+var assert = require("assert")
+/*
+describe('Array', function(){
+  describe('#indexOf()', function(){
+    it('should return -1 when the value is not present', function(){
+      assert.equal(-1, [1,2,3].indexOf(5));
+      assert.equal(-1, [1,2,3].indexOf(0));
+    })
+  })
+})
+*/
+
+
+requirejs.config({
+	baseUrl : "../marionette/src/",
 	paths: {
-		"moduleViewer"				: "modules/viewer/main",
+		"moduleViewer" 				: "modules/viewer/main",
 		"photoview"					: 'components/photo/js/v_photo',
 		"photocollectionview"		: 'components/photo/js/c_photo',
 		"app"						: './app',
@@ -13,8 +30,14 @@ require.config({
 	}
 });
 
-require(['app'],function(){
-	"use strict";
-	var App = require("app");
-	App.initialize();
-});
+
+console.log("toto");
+
+
+return;
+var moduleViwer = requirejs("moduleViewer");
+		
+
+console.dir(moduleViwer);
+
+

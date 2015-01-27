@@ -74,25 +74,23 @@ testApp = function(){
 	});
 
 	test.it('app button', function(){
+		this.timeout(4000);
 		browser.getCurrentUrl().then(
 			function(url){
 				browser.findElement(driver.By.id('main-layout'));
 				assert.equal(true,true,"main layout found ");
+					
+				browser.wait(
+					function waitUntilAllimagesAreDownloaded() {
+						return browser.executeScript(function () {
+							var allImages = document.querySelectorAll('.photo-item .thumbnail img');
+							//2 convert it to a propoer array (for following sugar method "some")
+							var allImages = [].slice.call(allImages);
+							//3 check for all images to be loaded with the "some" method (image is loaded if it has width)
+							return allImages.some(function(image){return (image.offsetWidth > 0);});
+				})}, 4000);
 				captureScreen(browser,pathScreenshots + "/home.png");
-				//console.log("app url ");
-					/*
-		browser.wait(
-			function waitUntilAllimagesAreDownloaded() {
-				return browser.executeScript(function () {
-					var allImages = document.querySelectorAll('.article .image img');
-					//2 convert it to a propoer array (for following sugar method "some")
-					var allImages = [].slice.call(allImages);
-					//3 check for all images to be loaded with the "some" method (image is loaded if it has width)
-					return allImages.some(function(image){return (image.offsetWidth > 0);});
-		})}, 2000);
-		*/
-		
-				//assert.equal(true,true,url);
+				assert.equal(true,true,url);
 			});
 	});
 };

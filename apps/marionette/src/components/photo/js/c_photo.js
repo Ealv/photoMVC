@@ -1,7 +1,7 @@
-define(['marionette','components/photo/js/v_photo.js'], 
+define(['marionette','components/photo/js/v_photo.js'],
 	function(Marionette,PhotoView){
-		return Backbone.Marionette.CollectionView.extend({
+		return   Backbone.Marionette.CollectionView.extend({
 			childView: PhotoView,
 			tagName: 'ul'
-	});
+			});
 });

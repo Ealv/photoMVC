@@ -9,5 +9,4 @@ define(['marionette','models/photoitem'],
 			model : PhotoItem,
 			render : function(){return "<div>item.label</div>"; }
 		});
-
 });

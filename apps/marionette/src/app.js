@@ -1,9 +1,9 @@
-define(['jquery','underscore','backbone','marionette','router'], 
-	function($, _ ,Backbone, Marionette,Router){
+define(['infrastructure','router'],
+	function(){
 		"use strict";
-
+		var Router = require('router');
+		var Marionette = require("marionette");
 		var myApp = new Marionette.Application();
-
 		myApp.initialize = function(){
 			myApp.Router = new Router();
 			myApp.start();
