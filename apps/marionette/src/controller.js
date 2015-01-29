@@ -5,7 +5,6 @@ define(['marionette',"layouts/home/js/l_home"],
 	var myController = {
 		draw : function(layout) {
 			layout.render();
-
 		}
 	};
 

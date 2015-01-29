@@ -1,6 +1,6 @@
 require.config({
 	paths: {
-		"moduleViewer"				: "modules/viewer/main",
+		"moduleViewer"				: "modules/viewer/js/main",
 		"photoview"					: 'components/photo/js/v_photo',
 		"photocollectionview"		: 'components/photo/js/c_photo',
 		"app"						: './app',

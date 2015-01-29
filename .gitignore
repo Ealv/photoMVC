@@ -1,2 +1,13 @@
- react/node_modules/
- apps/react/node_modules/
+apps/react/node_modules/
+apps/node_modules/
+apps/marionette/node_modules/
+apps/test/node_modules/
+apps/marionette/build/
+apps/bower_components/
+apps/marionette/bower_components/
+server/img/
+node_modules/
+apps/marionette/build/
+
+
+ 

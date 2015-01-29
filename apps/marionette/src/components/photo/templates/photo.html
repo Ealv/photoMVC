@@ -1,7 +1,7 @@
 <a class="thumbnail" href="#" >
 	<img class="img-responsive-inv" src="{{url}}" >
 </a>
-<input class="toggle" type="checkbox">
+<input class="toggle" type="checkbox" {{#if selected}}checked="checked"{{else}}""{{/if}}  >
 	<label>{{text}}</label>
 	<button class="destroy"></button>
 </input>
