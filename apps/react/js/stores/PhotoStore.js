@@ -53,6 +53,7 @@ function update(id, updates) {
 
  */
 function updateAll(updates) {
+  console.log("update all photos");
   for (var id in _photos) {
     update(id, updates);
   }
@@ -104,7 +105,6 @@ var PhotoStore = assign({}, EventEmitter.prototype, {
   },
 
   emitChange: function() {
-    console.log("event change");
     this.emit(CHANGE_EVENT);
   },
 
@@ -138,12 +138,8 @@ AppDispatcher.register(function(payload) {
         create(action.photo);
       break;
     case PhotoConstants.PHOTO_TOGGLE_CHECK_ALL:
-    console.log("check all ");
-      if (PhotoStore.areAllChecked()) {
-        updateAll({check: false});
-      } else {
-        updateAll({check: true});
-      }
+        console.log("check all ");
+        updateAll({check: !PhotoStore.areAllChecked()});
       break;
     case PhotoConstants.PHOTO_UNDO_CHECK:
       update(action.id, {check: false});

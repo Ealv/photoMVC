@@ -68,7 +68,7 @@ grunt.initConfig({
 			tasks : ['csslint']
 		},
 		js : {
-			files : ['marionette/src/**/*.js','marionette/src/*.js'],
+			files : ['marionette/src/**/*.js','react/js/bundle.js'],
 			tasks : ['jshint','jscs'],
 			options : {
 				livereload : 35729
