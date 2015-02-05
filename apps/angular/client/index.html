@@ -9,13 +9,13 @@
 	</head>
 <body ng-controller="LinkCtrl">
 	<div id="header-layout" class="navbar-inverse">
-		<button id="toggle-siderbar-header" ng-click="toggleSideBar()" class ="navbar-toggle toggle-siderbar" type="button">
+		<button id="toggle-siderbar-header" ng-click="toggleSideBar()" class="navbar-toggle toggle-siderbar" type="button">
 			<div class="icon-bar"></div><div class="icon-bar"></div><div class="icon-bar"></div>
 		</button>
 	</div>
 	<div id="middle-layout" ng-class="middle" class="container" >
 		<div id="sidebar-layout" >
-			<button id="toggle-inner-siderbar" class ="visible-xs-inline navbar-toggle toggle-siderbar" type="button">
+			<button id="toggle-inner-siderbar" ng-click="toggleSideBar()" class="visible-xs-inline navbar-toggle toggle-siderbar" type="button">
 				<div class="icon-bar"></div><div class="icon-bar"></div><div class="icon-bar"></div>
 			</button>
 			<div>summary</div>
@@ -34,7 +34,7 @@
 				</ul>
 			</div>
 		</div>
-		<div id="blur-layout" class="visible-xs-inline" ></div>
+		<div id="blur-layout" ng-click="toggleSideBar()" class="visible-xs-inline" ></div>
 	</div>
 	<script type="text/javascript" src="./lib/angular.min.js"></script>
 	<script type="text/javascript" src="./app.js"></script>
