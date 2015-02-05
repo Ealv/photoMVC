@@ -22,13 +22,14 @@
 		</div>
 		<div id="main-layout" >
 			<div id="photoapp">
-				<button ng-click="toggleSelected()" >Select All</button>
+				<!-- <button ng-click="toggleSelected()" >Select All</button>
 				Search : <input ng-model="searchText">
+				-->
 				<ul id="photo-list" >
 					<div class="row">
 						<li class="photo-item col-xs-12 col-md-2 col-lg-1" ng-repeat="photo in photos | filter:photos:searchText" >
 							<a class="thumbnail" ><img class="img-responsive-inv" src="{{photo.url}}" ></a>
-							<label>{{photo.text}}</label>
+							<!-- <label>{{photo.text}}</label> -->
 						</li>
 					</div>
 				</ul>
