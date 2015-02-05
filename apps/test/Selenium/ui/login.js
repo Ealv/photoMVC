@@ -8,6 +8,7 @@ var driver = require('selenium-webdriver');
 var test = require('selenium-webdriver/testing');
 var assert = require("assert");
 
+
 /**
 method to take a snapshot.
 if you want to take a sanpa shot of a pariculary element...
@@ -24,8 +25,8 @@ var captureScreen = function(browser,name,element) {
 
 var capabilities = {
 	//silent: true, // maybe output more for tests?
-	browserName: 'phantomjs',
-	//browserName: 'firefox',
+	//browserName: 'phantomjs',
+	browserName: 'firefox',
 	javascriptEnabled: true,
 	takesScreenshot: true,
 	databaseEnabled: false,
@@ -40,7 +41,7 @@ testLogin = function(){
 	});
 
 	test.it('must have a login button', function(){
-		this.timeout(9000);
+		this.timeout(15000);
 		browser.manage().timeouts().implicitlyWait(2000);
 		browser.get('http://localhost:8000');
 
@@ -74,7 +75,7 @@ testApp = function(){
 	});
 
 	test.it('app button', function(){
-		this.timeout(4000);
+		this.timeout(14000);
 		browser.getCurrentUrl().then(
 			function(url){
 				browser.findElement(driver.By.id('main-layout'));

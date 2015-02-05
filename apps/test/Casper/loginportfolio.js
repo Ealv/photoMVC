@@ -2,7 +2,7 @@
 var height = 1024;
 var width = 1680;
 
-var numberOftest = 6;
+var numberOftest = 2;
 
 
 var urlStart = "http://localhost:8000/";
@@ -13,7 +13,7 @@ casper.test.begin('Loggin process can be done ', numberOftest, function (test) {
       test.assertEquals(casper.getCurrentUrl(), "http://localhost:8000/","url login is ok");
 
       //wait until backbone+marionette do thieir job on page
-       casper.waitForSelector("#marionette",  function(){
+       casper.waitForSelector("#login-button",  function(){
         //test.assertExists('#user-input', "user inupt exist");
        // test.assertExists('#password-input', "password inupt exist");
 
@@ -29,16 +29,19 @@ casper.test.begin('Loggin process can be done ', numberOftest, function (test) {
     //  casper.captureSelector('screenshots/app-logo.png', '#app-logo');
         
       // Click on the login button
-      casper.click('#marionette');
+      casper.click('#login-button');
     });
     casper.then(function() {
         console.log("i capture marionette ");
-        casper.waitForSelector("#left",  function(){ 
-            casper.evaluate(initializePage);
+        casper.waitForSelector("#sidebar-layout",  function(){ 
+ 		test.assertEquals(true,true, "home is loaded");
+            
+		casper.evaluate(initializePage);
             casper.capture('screenshots/marionette.png');
             casper.back();
         });   
     });
+	/*
     casper.then(function() {
         casper.click('#angularjs');
     });
@@ -51,6 +54,7 @@ casper.test.begin('Loggin process can be done ', numberOftest, function (test) {
         });
         
     });
+*/
     /*
      casper.then(function() {
         casper.click('#react');
