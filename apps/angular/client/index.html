@@ -4,7 +4,6 @@
 		<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>List images</title>
-		<link rel="stylesheet" href="lib/react-0.12.1/examples/shared/css/base.css" />
 		<link rel="stylesheet" href="../../css/app.css" />
 	</head>
 <body ng-controller="LinkCtrl">
@@ -22,22 +21,19 @@
 		</div>
 		<div id="main-layout" >
 			<div id="photoapp">
-				<!-- <button ng-click="toggleSelected()" >Select All</button>
-				Search : <input ng-model="searchText">
-				-->
-				<ul id="photo-list" >
-					<div class="row">
-						<li class="photo-item col-xs-12 col-md-2 col-lg-1" ng-repeat="photo in photos | filter:photos:searchText" >
+				<!-- <button ng-click="toggleSelected()" >Select All</button>-->
+				Search : <input ng-model="query">
+				<ul  id="photos" >
+						<li class="photo-item col-xs-12 col-md-2 col-lg-1" ng-repeat="photo in photos | filter:query"  >
 							<a class="thumbnail" ><img class="img-responsive-inv" src="{{photo.url}}" ></a>
-							<!-- <label>{{photo.text}}</label> -->
+							<label>{{photo.text}}</label>
 						</li>
-					</div>
 				</ul>
 			</div>
 		</div>
 		<div id="blur-layout" ng-click="toggleSideBar()" class="visible-xs-inline" ></div>
 	</div>
-	<script type="text/javascript" src="./lib/angular.min.js"></script>
+	<script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
 	<script type="text/javascript" src="./app.js"></script>
 	<script src="//localhost:35729/livereload.js"></script>
 </body>

@@ -1,24 +1,28 @@
 module.exports = function(grunt) {
 grunt.initConfig({
-	pkg : grunt.file.readJSON('package.json'),
-	less : {
-		development : {
-			options : {
-				paths : ["assets/css"]
+	pkg: grunt.file.readJSON('package.json'),
+	less: {
+		development: {
+			options: {
+				paths: ["assets/css"],
+				compress : true,
+				strictImports:true,
+				strictUnits:true,
+				sourceMap:true
 			},
-			files : {
+			files: {
 				"css/app.css": "css/app.less"
 			}
 		}
 	},
-	csslint : {
-		strict : {
-			options : {
-				"import" : false,
-				"adjoining-classes" : false,
-				"ids" : false
+	csslint: {
+		strict: {
+			options: {
+				"import": true,
+				"adjoining-classes": false,
+				"ids": false
 			},
-			src : ['css/app.css']
+			//src: ['css/app.css',"!**bootstrap*"]
 		}
 	},
 	jscs: {
@@ -26,35 +30,35 @@ grunt.initConfig({
 			"disallowEmptyBlocks": true,
 			"disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
 			"disallowKeywords": ["with","eval"],
-			"disallowMixedSpacesAndTabs" : true,
+			"disallowMixedSpacesAndTabs": true,
 			"disallowMultipleLineBreaks": true,
 			"disallowMultipleLineStrings": true,
 			"disallowMultipleVarDecl": true,
-			"requireCommaBeforeLineBreak" : true
+			"requireCommaBeforeLineBreak": true
 		},
-		all : ['*/src/**/*.js',"!angular/client/**","!marionette/src/vendors/require/require.js"]
+		all: ['*/src/**/*.js',"angular/client/**.js","!angular/client/node_modules/**","!marionette/src/vendors/require/require.js"]
 	},
 	jshint: {
-		options : {
-			reporter : require('jshint-stylish'),
+		options: {
+			reporter: require('jshint-stylish'),
 			/*
 			curly : true,
 			eqeqeq : true,
 			eqnull : true,
 			*/
-			browser : true,
-			globals : {
-				jQuery : true
+			browser: true,
+			globals: {
+				jQuery: true
 			}
 		},
-		all : ['marionette/src/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/src/vendors/require/require.js"]
+		all: ['marionette/src/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/src/vendors/require/require.js"]
 	},
 	watch: {
-		less : {
-			files : 'css/*.less',
-			tasks : ['less'],
-			options : {
-				livereload : 35729
+		less: {
+			files: 'css/*.less',
+			tasks: ['less'],
+			options: {
+				livereload: 35729
 			}
 		},
 		configFiles: {
@@ -63,21 +67,21 @@ grunt.initConfig({
 				reload: true
 			}
 		},
-		css : {
-			files : 'css/*.css',
-			tasks : ['csslint']
+		css: {
+			files: 'css/*.css',
+			tasks: ['csslint']
 		},
-		js : {
-			files : ['marionette/src/**/*.js','react/js/bundle.js','angular/client/app.js'],
-			tasks : ['jshint','jscs'],
-			options : {
-				livereload : 35729
+		js: {
+			files: ['marionette/src/**/*.js','react/js/bundle.js','angular/client/app.js'],
+			tasks: ['jshint','jscs'],
+			options: {
+				livereload: 35729
 			}
 		},
-		templates : {
-			files : ['index.html', 'marionette/src/**/*.html','marionette/src/*.html','angular/client/index.html'],
-			options : { 
-				livereload : 35729
+		templates: {
+			files: ['index.html', 'marionette/src/**/*.html','marionette/src/*.html','react/index.html','angular/client/index.html'],
+			options: {
+				livereload: 35729
 			}
 		}
 	}

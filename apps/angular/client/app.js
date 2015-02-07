@@ -1,21 +1,22 @@
 var linkApp = angular.module('linkApp', []);
 
-
 linkApp.controller('LinkCtrl', function ($scope,$http) {
 
 	$scope.photos = [];
+	$scope.middle = "container";
 
 	$http.get('/server/photos/').success(function(photoData) {
-						console.dir(photoData);
-						$scope.photos = angular.copy(photoData);
+						var arrayToto = [];
+						for(toto in photoData){
+							arrayToto.push(photoData[toto]);
+						}
+						$scope.photos = arrayToto;
 	});
-
-	$scope.middle = "container";
 
 	$scope.toggleSideBar = function(){
 		var newMiddleClass = "container";
-		newMiddleClass+= ($scope.middle.indexOf("active") > 0 ? "" : " active");
-		$scope.middle = newMiddleClass;
+		var newMiddleClass= ($scope.middle.indexOf("active") > 0 ? "" : " active");
+		$scope.middle = "container " + newMiddleClass;
 	};
 
 });
