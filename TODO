@@ -11,6 +11,7 @@ Front end
 		Authenticate REgister user User perferences
 		Lazy Loading
 		UI elements 
+		Drag and Drop
 		React to event
 		Custom event throw in app
 		Fetch/save delete modify models from server

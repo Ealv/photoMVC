@@ -5,10 +5,12 @@ grunt.initConfig({
 		development: {
 			options: {
 				paths: ["assets/css"],
-				compress : true,
-				strictImports:true,
-				strictUnits:true,
-				sourceMap:true
+				compress: true,
+				strictImports: true,
+				strictUnits: true
+				//,
+				//sourceMap:true,
+				//sourceMapURL:"./app.css.map"
 			},
 			files: {
 				"css/app.css": "css/app.less"
