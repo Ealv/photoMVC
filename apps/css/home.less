@@ -1,19 +1,26 @@
 
 @import "../bower_components/bootstrap/less/variables.less";
 
+@z-index-detail : 1;
+
+@z-index-blur : 4;
+
+@z-index-sidebar : 6;
 
 //heigth nav is 
  //@height-nav  : 10%;
  @height-nav  : 40px;
 
 //ratio between sidebar and main when side bar is visible (not smart phone)
- @sm-ratio-sidebar-main : 0.2;
+ @sm-ratio-sidebar-main : 0.15;
 
 //ratio between sidebar and main whe side bar is visible (for smart phone)
  @xs-ratio-sidebar-main : 0.9;
 
- @slide-duration-sidebar :0.5s;
+ @slide-duration-sidebar :0.4s;
 
+
+html, body, .center, #main-layout,#sidebar,#detail-layout {height:100%;}
  
 #header-layout {
 	margin-bottom: 0;
@@ -34,14 +41,10 @@
 	width : percentage(@sm-ratio-sidebar-main);
 	height : 100%;
 	position: fixed;
-
 	background-color: @background-color-sidebar-layout;
-
 	border-right-style: solid;
 	border-right-width: 3px;
-
 	transform: translateX(0);
-	-webkit-transition: @slide-duration-sidebar ease all;
 	transition: @slide-duration-sidebar ease all;
 }
 
@@ -69,29 +72,43 @@
 	padding-top: 10px;
 	background-color: @background-color-main-layout;
 	overflow: auto;
-	//overflow: overlay;
-	-webkit-transition: width @slide-duration-sidebar;
 	transition: width @slide-duration-sidebar;
 }
 
-#middle-layout.active {
+#detail-layout {
+	float:right;
+	transform: translate3d(100%, 0, 0);
+	transition: @slide-duration-sidebar ease all;
+	width : 100%;
+	position:fixed;
+	//top : percentage(@nav-height);
+	z-index: @z-index-detail;
+}
+
+#middle-layout.toggle-detail {
+	#detail-layout {
+		transform: translate3d(0%, 0, 0);
+		transition: @slide-duration-sidebar ease all;
+	}
+}
+
+#middle-layout.toggle-sidebar {
 	#main-layout {
 		width: 100%;
 	}
 
 	#sidebar-layout {
-		-webkit-transform: translate3d(-100%, 0, 0);  
 		transform: translate3d(-100%, 0, 0);  
 	}
 }
 
-//for smart phone sidabr overlap most part of main part AND nav bar
+//for smart phone sidbar overlap most part of main part AND nav bar
 @media (max-width: @screen-xs-max) {
 	#sidebar-layout {
 		width : percentage(@xs-ratio-sidebar-main);
 		top: 0;
 		height: 100%;
-		z-index: 6;
+		z-index: @z-index-sidebar;
 	}
 
 	#main-layout {
@@ -103,7 +120,7 @@
 		width: 100%;
 		height: 100%;
 		top: 0;
-		z-index: 4;
+		z-index: @z-index-blur;
 	}
 
 	//blur on/off
@@ -112,7 +129,7 @@
 		opacity: 0.7;
 	}
 
-	#middle-layout.active {
+	#middle-layout.toggle-sidebar {
 		#main-layout {
 			opacity: initial;
 		}
@@ -122,10 +139,3 @@
 		}
 	}
  }
-
-
-/*
-#sidebar-layout	{background-color: #FF00FF;}
-#main-layout	{background-color: #0000FF;}
-#toolarge		{height: 1500px;background-color: #FF0000;}
-*/

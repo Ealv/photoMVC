@@ -30,10 +30,10 @@ define([
 			"click @ui.fog"						: "siderbarToggle"
 		},
 		siderbarToggle : function(){
-			$("#middle-layout").toggleClass("active");
+			$("#middle-layout").toggleClass("toggle-sidebar");
 		},
-		siderbarHide : function(){
-			$("#middle-layout").addClass("active");
+		detailToggle : function(){
+			$("#middle-layout").toggleClass("toggle-detail");
 		},
 		render: function(){
 			// Using Underscore we can compile our template with data

@@ -16,8 +16,8 @@ var myReq = request.post(url).end(function(response){
 
 //logic about main layout
 
-$("#toggle-siderbar-header").click(function(){$("#middle-layout").toggleClass("active");});
-$("#toggle-inner-siderbar").click(function(){$("#middle-layout").toggleClass("active");});
-$("#blur-layout").click(function(){$("#middle-layout").addClass("active");});
+$("#toggle-siderbar-header").click(function(){$("#middle-layout").toggleClass("toggle-sidebar");});
+$("#toggle-inner-siderbar").click(function(){$("#middle-layout").toggleClass("toggle-sidebar");});
+$("#blur-layout").click(function(){$("#middle-layout").toggleClass("toggle-sidebar");});
 
 React.render(<PhotoApp />, document.getElementById('photoapp'));

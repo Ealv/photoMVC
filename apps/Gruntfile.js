@@ -5,6 +5,10 @@ grunt.initConfig({
 		development: {
 			options: {
 				paths: ["assets/css"],
+				plugins: [
+					new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
+					//,new (require('less-plugin-clean-css'))(cleanCssOptions)
+				],
 				compress: true,
 				strictImports: true,
 				strictUnits: true
