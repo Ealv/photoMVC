@@ -51,7 +51,7 @@ var PhotoItem = React.createClass({
           'editing': this.state.isEditing
         })}  key={photo.id} >
 
-        <a className="thumbnail" href="#"  >
+        <a href="#" >
           <img className="img-responsive-inv" src={decodeURI(photo.url)} />
         </a>
         <input className="toggle" type="checkbox" checked={photo.check} onChange={this._onToggleCheck} />

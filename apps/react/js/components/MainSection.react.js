@@ -1,65 +1,63 @@
-/**
- * Copyright (c) 2014, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
 var PhotoActions = require('../actions/PhotoActions');
-var PhotoItem = require('./PhotoItem.react');
+var PhotoGrid = require('./PhotoGrid.react');
+
+/*
+function getMainSectionState() {
+	return {
+		currentIndex: PhotoStore.getAll(),
+		areAllChecked: PhotoStore.areAllChecked()
+		};
+	};
+*/
+
 
 var MainSection = React.createClass({
 
-  propTypes: {
-    allPhotos: ReactPropTypes.object.isRequired,
-    areAllChecked: ReactPropTypes.bool.isRequired
-  },
+	propTypes: {
+		allPhotos: ReactPropTypes.object.isRequired,
+		areAllChecked: ReactPropTypes.bool.isRequired
+	},
 
-  /**
-   * @return {object}
-   */
-  render: function() {
-    // This section should be hidden by default
-    // and shown when there are Photos.
-    if (Object.keys(this.props.allPhotos).length < 1)
-      return null;
-
-    var allPhotos = this.props.allPhotos;
-    var photos = [];
-    for (var key in allPhotos)
-      photos.push(<PhotoItem key={key} photo={allPhotos[key]} />);
+	/**
+	* @return {object}
+	*/
+	render: function() {
+	// This section should be hidden by default
+	// and shown when there are Photos.
+	if (Object.keys(this.props.allPhotos).length < 1)
+		return null;
 
 
-    return (
-      <section id="main" >
-        <input
-          id="toggle-all"
-          type="checkbox"
-          onChange={this._onToggleCheckAll}
-          checked={this.props.areAllChecked ? 'checked' : ''}
-        />
-        <label htmlFor="toggle-all">Mark all as checked</label>
-          <ul id="photo-list" >
-            <div className="row">
-              {photos}
-            </div>
-          </ul>
-        
-      </section>
-    );
-  },
+	var NavBar = React.createClass({
+		render: function() {
+		return (<ul className="nav nav-tabs" id="myTab">
+			<li className="active"><a href="#home">Home</a></li>
+			<li><a href="#profile">Profile</a></li>
+			</ul>);
+		}
+	});
 
-  /**
-   * Event handler to mark all Photos as complete
-   */
-  _onToggleCheckAll: function() {
-    PhotoActions.toggleCheckAll();
-  }
-
+	var NavContent = React.createClass({
+		render: function() {
+		return (<div className="tab-content">
+				<div className="tab-pane fade in active" id="home">
+					<PhotoGrid allPhotos={this.props.allPhotos} areAllChecked={this.props.areAllChecked} >
+					</PhotoGrid>
+				</div>
+				<div className="tab-pane" id="profile">
+					ttttt
+				</div>	
+			</div>);
+		}
+	});
+	return (<div>
+				<NavBar color="grey"></NavBar>
+					<NavContent color="grey" allPhotos={this.props.allPhotos} areAllChecked={this.props.areAllChecked}>
+					</NavContent>
+			</div>);
+	}
 });
 
 module.exports = MainSection;

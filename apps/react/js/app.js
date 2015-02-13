@@ -16,6 +16,13 @@ var myReq = request.post(url).end(function(response){
 
 //logic about main layout
 
+$('#myTab a').click(function (e) {
+  e.preventDefault();
+  console.log("tab ok click");
+  $(this).tab('show');
+});
+
+
 $("#toggle-siderbar-header").click(function(){$("#middle-layout").toggleClass("toggle-sidebar");});
 $("#toggle-inner-siderbar").click(function(){$("#middle-layout").toggleClass("toggle-sidebar");});
 $("#blur-layout").click(function(){$("#middle-layout").toggleClass("toggle-sidebar");});

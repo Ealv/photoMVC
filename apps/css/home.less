@@ -9,7 +9,7 @@
 
 //heigth nav is 
  //@height-nav  : 10%;
- @height-nav  : 40px;
+ @height-nav  : 0.1;
 
 //ratio between sidebar and main when side bar is visible (not smart phone)
  @sm-ratio-sidebar-main : 0.15;
@@ -24,9 +24,9 @@ html, body, .center, #main-layout,#sidebar,#detail-layout {height:100%;}
  
 #header-layout {
 	margin-bottom: 0;
-	height : @height-nav;
+	height : percentag(@height-nav);
 	min-height : 40px;
-	line-height : @height-nav;
+	line-height : percentag(@height-nav);
 	position: static;
 }
 
@@ -66,12 +66,15 @@ html, body, .center, #main-layout,#sidebar,#detail-layout {height:100%;}
 
 #main-layout {
 	width: percentage(1 - @sm-ratio-sidebar-main);
-	height : 100%;
+	//height : percentage(1 - @height-nav);
+	bottom:0;
 	float : right;
+	position:relative;
+	overflow: hidden;
 	padding-left: 10px;
 	padding-top: 10px;
 	background-color: @background-color-main-layout;
-	overflow: auto;
+	
 	transition: width @slide-duration-sidebar;
 }
 
