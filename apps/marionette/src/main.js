@@ -3,7 +3,7 @@ require.config({
 		"moduleViewer"				: "modules/viewer/js/main",
 		"photoview"					: 'components/photo/js/v_photo',
 		"photocollectionview"		: 'components/photo/js/c_photo',
-		"precompiled"				: 'prec/precompiled.handlebars',
+		//"precompiled"				: 'prec/precompiled.handlebars',
 		"app"						: './app',
 		"i18n"						: '../bower_components/i18next/i18next.amd',
 		"jquery"					: '../bower_components/jquery/dist/jquery',

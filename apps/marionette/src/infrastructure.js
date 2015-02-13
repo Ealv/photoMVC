@@ -7,6 +7,6 @@ define([
 	"handlebars",
 	"moment",
 	'moment-en',
-	"handlebars.helpers",
-	"precompiled"
+	"handlebars.helpers"
+	//,"precompiled"
 ], function() { });
