@@ -13,62 +13,63 @@ var PhotoActions = require('../actions/PhotoActions');
 
 var Footer = React.createClass({
 
-  propTypes: {
-    allPhotos: ReactPropTypes.object.isRequired
-  },
+         propTypes: {
+            allPhotos: ReactPropTypes.object.isRequired
+         },
 
-  /**
-   * @return {object}
-   */
-  render: function() {
-    var allPhotos = this.props.allPhotos;
-    var total = Object.keys(allPhotos).length;
+         /**
+          * @return {object}
+          */
+         render: function() {
+            var allPhotos = this.props.allPhotos;
+            var total = Object.keys(allPhotos).length;
 
-    if (total === 0) {
-      return null;
-    }
+            if (total === 0) {
+               return null;
+            }
 
-    var completed = 0;
-    for (var key in allPhotos) {
-      if (allPhotos[key].complete) {
-        completed++;
-      }
-    }
+            var completed = 0;
+            for (var key in allPhotos) {
+               if (allPhotos[key].complete) {
+                  completed++;
+               }
+            }
 
-    var itemsLeft = total - completed;
-    var itemsLeftPhrase = itemsLeft === 1 ? ' item ' : ' items ';
-    itemsLeftPhrase += 'left';
+            var itemsLeft = total - completed;
+            var itemsLeftPhrase = itemsLeft === 1 ? ' item ' : ' items ';
+            itemsLeftPhrase += 'left';
 
-    // Undefined and thus not rendered if no completed items are left.
-    var clearCompletedButton;
-    if (completed) {
-      clearCompletedButton =
-        <button
-          id="clear-completed"
-          onClick={this._onClearCompletedClick}>
-          Clear completed ({completed})
-        </button>;
-    }
+            // Undefined and thus not rendered if no completed items are left.
+            var clearCompletedButton;
+            if (completed) {
+               clearCompletedButton = < button
+               id = "clear-completed"
+               onClick = {
+                     this._onClearCompletedClick
+                  } >
+                  Clear completed({
+                     completed
+                  }) < /button>;
+            }
 
-  	return (
-      <footer id="footer">
-        <span id="photo-count">
-          <strong>
-            {itemsLeft}
-          </strong>
-          {itemsLeftPhrase}
-        </span>
-        {clearCompletedButton}
-      </footer>
-    );
-  },
+            return ( < footer id = "footer" >
+               < span id = "photo-count" >
+               < strong > {
+                  itemsLeft
+               } < /strong> {
+               itemsLeftPhrase
+            } < /span> {
+            clearCompletedButton
+         } < /footer>
+      );
+   },
 
-  /**
-   * Event handler to delete all completed PHOTOSs
-   */
-  _onClearCompletedClick: function() {
-    PhotoActions.destroyCompleted();
-  }
+   /**
+    * Event handler to delete all completed PHOTOSs
+    */
+   _onClearCompletedClick: function() {
+      PhotoActions.destroyCompleted();
+   }
 
 });
 

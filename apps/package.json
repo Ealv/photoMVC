@@ -11,7 +11,8 @@
     "grunt-contrib-handlebars": "~0.9.3",
     "npm": "~2.5.0",
     "grunt-jsbeautifier": "~0.2.8",
-    "grunt-jsonlint": "~1.0.4"
+    "grunt-jsonlint": "~1.0.4",
+    "grunt-processhtml": "~0.3.7"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.10.0",

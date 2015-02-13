@@ -42,7 +42,9 @@ grunt.initConfig({
 			"disallowMultipleVarDecl": true,
 			"requireCommaBeforeLineBreak": true
 		},
-		all: ['*/src/**/*.js',"angular/client/**.js","!angular/client/node_modules/**","!marionette/src/vendors/require/require.js"]
+		all: ['*/src/**/*.js',"angular/client/**.js","!angular/client/node_modules/**",
+		"!marionette/src/vendors/require/require.js",
+		"!marionette/src/prec/*"]
 	},
 	jshint: {
 		options: {
@@ -57,9 +59,48 @@ grunt.initConfig({
 				jQuery: true
 			}
 		},
-		all: ['marionette/src/**/*.js',"Gruntfile.js","!angular/client/**","!marionette/src/vendors/require/require.js"]
+		all: ['marionette/src/**/*.js',"Gruntfile.js","!angular/client/**",
+		"!marionette/src/vendors/require/require.js",
+		"!marionette/src/prec/*"
+		]
 	},
+
+	handlebars: {
+		compile: {
+			options: {
+				amd: true
+			},
+			src: ["marionette/src/**/templates/**/*.html"],
+			dest: "marionette/src/prec/precompiled.handlebars.js"
+		}
+	},
+
 	watch: {
+		js: {
+			files: ['marionette/src/**/*.js','react/js/bundle.js','angular/client/app.js'],
+			tasks: ['jshint','jscs'],
+			options: {
+				debounceDelay: 250,
+				spawn: true,
+				interrupt: true
+			}
+		},
+		html: {
+			files: ['index.html', 'marionette/src/**/*.html','marionette/src/*.html','react/index.html','angular/client/index.html'],
+			//tasks: ['handlebars'],
+			options: {
+				debounceDelay: 250,
+				spawn: true
+			}
+		},
+		configFiles: {
+			files: [ 'Gruntfile.js', 'config/*.js' ],
+			options: {
+			  	debounceDelay: 250,
+				spawn: true,
+                interrupt: true
+			}
+		},
 		less: {
 			files: 'css/*.less',
 			tasks: ['less'],
@@ -67,31 +108,81 @@ grunt.initConfig({
 				livereload: 35729
 			}
 		},
-		configFiles: {
-			files: [ 'Gruntfile.js', 'config/*.js' ],
+		json : {
+			files: ['locales/**/*.json'],
+			tasks: ['jsonlint'],
 			options: {
-				reload: true
+				debounceDelay: 250,
+				spawn: true,
+				interrupt: true
 			}
 		},
-		css: {
-			files: 'css/*.css',
-			tasks: ['csslint']
-		},
-		js: {
-			files: ['marionette/src/**/*.js','react/js/bundle.js','angular/client/app.js'],
-			tasks: ['jshint','jscs'],
-			options: {
-				livereload: 35729
+		//css: {
+		//	files: 'css/*.css',
+		//	tasks: ['csslint']
+		//},
+		livereload: {
+			options: { livereload: true },
+			files: [
+				'css/*.css', 
+				'{marionette,react,angular}/**/*.html',
+				'app/**/*.js', 'app/**/*.json',
+				'!app/lib/**','!app/build/**']
 			}
-		},
-		templates: {
-			files: ['index.html', 'marionette/src/**/*.html','marionette/src/*.html','react/index.html','angular/client/index.html'],
-			options: {
-				livereload: 35729
+	},
+	jsbeautifier : {
+    	files : [
+    	"marionette/src/**/*.js",
+    	"react/js/**/*.js",
+    	"angular/client/*.js",
+    	"!react/js/build.js",
+        //"app/**/*.less", experimental !
+		"marionette/src/**/*.html",
+		"angular/client/*.html",
+		"react/*.html",
+		'!app/lib/**'],
+        options : {
+        	js: {
+			indentChar: "   ",
+			indentSize: 1,
+			maxPreserveNewlines: 2
+			},
+			/*css: {
+			fileTypes: [".less"],
+			indentChar: "   ",
+			preserve_newlines: true,
+			//breakChainedMethods: false,
+			indentSize: 1,
+			maxPreserveNewlines: 2
+			}*/
+			html: {
+				indentChar: "   ",
+				indentScripts: "keep",
+				//preserve_newlines: false,
+				indentSize: 1,
+				maxPreserveNewlines: 2
+				}
+
 			}
-		}
-	}
+        },
+		processhtml: {
+			build: {
+				options: {
+					process: true,
+				},
+				files: {
+					'build/index.html': ['build/index.html']
+				}
+			}
+        },
+
 });
+
+grunt.loadNpmTasks("grunt-jsbeautifier");
+
+grunt.loadNpmTasks('grunt-processhtml');
+
+grunt.loadNpmTasks('grunt-contrib-handlebars');
 
 grunt.loadNpmTasks("grunt-jscs");
 
