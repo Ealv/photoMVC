@@ -4,8 +4,6 @@ define([
 	'underscore',
 	'backbone',
 	'marionette',
-	// Using the Require.js text! plugin, we are loaded raw text
-	// which will be used as our views primary template
 	'text!../templates/home.html'
 ], function($, _, Backbone,Marionette, HomePanelTemp){
 

@@ -1,11 +1,11 @@
 define(['models/photoitem',
-	'photocollectionview',
+	'photocollectionview','handlebars',
 	'text!./modules/viewer/templates/viewer.html'
 	],
-function(PhotoItem,	PhotoCollectionView	,ViewerTemplate	){
+function(PhotoItem,	PhotoCollectionView, Handlebars, ViewerTemplate	){
 
 	var ImageViewer = Backbone.Marionette.LayoutView.extend({
-		template: ViewerTemplate,
+		template: Handlebars.compile(ViewerTemplate),
 		regions: {
 			gridviewer: "#gridviewer"
 		},
@@ -26,7 +26,7 @@ function(PhotoItem,	PhotoCollectionView	,ViewerTemplate	){
 		render: function(){
 			// Using Underscore we can compile our template with data
 			var data = {};
-			var compiledTemplate = _.template( ViewerTemplate, data );
+			var compiledTemplate = this.template;
 			this.$el.append( compiledTemplate);
 
 			this.collection = new Backbone.Collection({model: PhotoItem});
