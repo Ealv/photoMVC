@@ -1,170 +1,176 @@
 module.exports = function(grunt) {
-grunt.initConfig({
-	pkg: grunt.file.readJSON('package.json'),
-	less: {
-		development: {
-			options: {
-				paths: ["assets/css"],
-				plugins: [
-					new (require('less-plugin-autoprefix'))({browsers: ["last 2 versions"]})
-					//,new (require('less-plugin-clean-css'))(cleanCssOptions)
-				],
-				compress: true,
-				strictImports: true,
-				strictUnits: true
-				//,
-				//sourceMap:true,
-				//sourceMapURL:"./app.css.map"
-			},
-			files: {
-				"css/app.css": "css/app.less"
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
+		less: {
+			development: {
+				options: {
+					paths: ["assets/css"],
+					plugins: [
+						new(require('less-plugin-autoprefix'))({
+							browsers: ["last 2 versions"]
+						})
+						//,new (require('less-plugin-clean-css'))(cleanCssOptions)
+					],
+					compress: true,
+					strictImports: true,
+					strictUnits: true
+						//,
+						//sourceMap:true,
+						//sourceMapURL:"./app.css.map"
+				},
+				files: {
+					"css/app.css": "css/app.less"
+				}
 			}
-		}
-	},
-	csslint: {
-		strict: {
-			options: {
-				"import": true,
-				"adjoining-classes": false,
-				"ids": false
-			},
-			//src: ['css/app.css',"!**bootstrap*"]
-		}
-	},
-	jscs: {
-		options: {
-			"disallowEmptyBlocks": true,
-			"disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
-			"disallowKeywords": ["with","eval"],
-			"disallowMixedSpacesAndTabs": true,
-			"disallowMultipleLineBreaks": true,
-			"disallowMultipleLineStrings": true,
-			"disallowMultipleVarDecl": true,
-			"requireCommaBeforeLineBreak": true
 		},
-		all: ['*/src/**/*.js',"angular/client/**.js","!angular/client/node_modules/**",
-		"!marionette/src/vendors/require/require.js",
-		"!marionette/src/prec/*"]
-	},
-	jshint: {
-		options: {
-			reporter: require('jshint-stylish'),
-			/*
+		csslint: {
+			strict: {
+				options: {
+					"import": true,
+					"adjoining-classes": false,
+					"ids": false
+				},
+				//src: ['css/app.css',"!**bootstrap*"]
+			}
+		},
+		jscs: {
+			options: {
+				"disallowEmptyBlocks": true,
+				"disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+				"disallowKeywords": ["with", "eval"],
+				"disallowMixedSpacesAndTabs": true,
+				"disallowMultipleLineBreaks": true,
+				"disallowMultipleLineStrings": true,
+				"disallowMultipleVarDecl": true,
+				"requireCommaBeforeLineBreak": true
+			},
+			all: ['*/src/**/*.js', "angular/client/**.js", "!angular/client/node_modules/**",
+				"!marionette/src/vendors/require/require.js",
+				"!marionette/src/prec/*"
+			]
+		},
+		jshint: {
+			options: {
+				reporter: require('jshint-stylish'),
+				/*
 			curly : true,
 			eqeqeq : true,
 			eqnull : true,
 			*/
-			browser: true,
-			globals: {
-				jQuery: true
-			}
-		},
-		all: ['marionette/src/**/*.js',"Gruntfile.js","!angular/client/**",
-		"!marionette/src/vendors/require/require.js",
-		"!marionette/src/prec/*"
-		]
-	},
-
-	handlebars: {
-		compile: {
-			options: {
-				amd: true
+				browser: true,
+				globals: {
+					jQuery: true
+				}
 			},
-			src: ["marionette/src/**/templates/**/*.html"],
-			dest: "marionette/src/prec/precompiled.handlebars.js"
-		}
-	},
-
-	watch: {
-		js: {
-			files: ['marionette/src/**/*.js','react/js/bundle.js','angular/client/app.js'],
-			tasks: ['jshint','jscs'],
-			options: {
-				debounceDelay: 250,
-				spawn: true,
-				interrupt: true
+			all: ['marionette/src/**/*.js', "Gruntfile.js", "!angular/client/**",
+				"!marionette/src/vendors/require/require.js",
+				"!marionette/src/prec/*"
+			]
+		},
+		handlebars: {
+			compile: {
+				options: {
+					amd: true
+				},
+				src: ["marionette/src/**/templates/**/*.html"],
+				dest: "marionette/src/prec/precompiled.handlebars.js"
 			}
 		},
-		html: {
-			files: ['index.html', 'marionette/src/**/*.html','marionette/src/*.html','react/index.html','angular/client/index.html'],
-			//tasks: ['handlebars'],
-			options: {
-				debounceDelay: 250,
-				spawn: true
-			}
-		},
-		configFiles: {
-			files: [ 'Gruntfile.js', 'config/*.js' ],
-			options: {
-			  	debounceDelay: 250,
-				spawn: true,
-                interrupt: true
-			}
-		},
-		less: {
-			files: 'css/*.less',
-			tasks: ['less'],
-			options: {
-				livereload: 35729
-			}
-		},
-		json : {
-			files: ['locales/**/*.json'],
-			tasks: ['jsonlint'],
-			options: {
-				debounceDelay: 250,
-				spawn: true,
-				interrupt: true
-			}
-		},
-		//css: {
-		//	files: 'css/*.css',
-		//	tasks: ['csslint']
-		//},
-		livereload: {
-			options: { livereload: true },
-			files: [
-				'css/*.css', 
-				'{marionette,react,angular}/**/*.html',
-				'app/**/*.js', 'app/**/*.json',
-				'!app/lib/**','!app/build/**']
-			}
-	},
-	jsbeautifier : {
-    	files : [
-    	"marionette/src/**/*.js",
-    	"react/js/**/*.js",
-    	"angular/client/*.js",
-    	"!react/js/build.js",
-        //"app/**/*.less", experimental !
-		"marionette/src/**/*.html",
-		"angular/client/*.html",
-		"react/*.html",
-		'!app/lib/**'],
-        options : {
-        	js: {
-			indentChar: "   ",
-			indentSize: 1,
-			maxPreserveNewlines: 2
+		watch: {
+			js: {
+				files: ['marionette/src/**/*.js', 'react/js/bundle.js', 'angular/client/app.js'],
+				tasks: ['jshint', 'jscs'],
+				options: {
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
+				}
 			},
-			/*css: {
-			fileTypes: [".less"],
-			indentChar: "   ",
-			preserve_newlines: true,
-			//breakChainedMethods: false,
-			indentSize: 1,
-			maxPreserveNewlines: 2
-			}*/
 			html: {
-				indentChar: "   ",
-				indentScripts: "keep",
-				//preserve_newlines: false,
-				indentSize: 1,
-				maxPreserveNewlines: 2
+				files: ['index.html', 'marionette/src/**/*.html', 'marionette/src/*.html', 'react/index.html', 'angular/client/index.html'],
+				//tasks: ['handlebars'],
+				options: {
+					debounceDelay: 250,
+					spawn: true
+				}
+			},
+			configFiles: {
+				files: ['Gruntfile.js', 'config/*.js'],
+				options: {
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
+				}
+			},
+			less: {
+				files: 'css/*.less',
+				tasks: ['less'],
+				options: {
+					livereload: 35729
+				}
+			},
+			json: {
+				files: ['locales/**/*.json'],
+				tasks: ['jsonlint'],
+				options: {
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
+				}
+			},
+			//css: {
+			//	files: 'css/*.css',
+			//	tasks: ['csslint']
+			//},
+			livereload: {
+				options: {
+					livereload: true
+				},
+				files: [
+					'css/*.css',
+					'{marionette,react,angular}/**/*.html',
+					'app/**/*.js', 'app/**/*.json',
+					'!app/lib/**', '!app/build/**'
+				]
+			}
+		},
+		jsbeautifier: {
+			files: [
+				"marionette/src/**/*.js",
+				"react/js/**/*.js",
+				"angular/client/*.js",
+				"!react/js/build.js",
+				"css/*.less",
+				"marionette/src/**/*.html",
+				"angular/client/*.html",
+				"Gruntfile.js",
+				"react/*.html",
+				'!app/lib/**'
+			],
+			options: {
+				js: {
+					indentChar: "	",
+					indentSize: 1,
+					maxPreserveNewlines: 2
+				},
+				css: {
+					fileTypes: [".less"],
+					indentChar: "	",
+					preserve_newlines: true,
+					//breakChainedMethods: false,
+					indentSize: 1,
+					maxPreserveNewlines: 2
+				},
+				html: {
+					indentChar: "	",
+					indentScripts: "keep",
+					//preserve_newlines: false,
+					indentSize: 1,
+					maxPreserveNewlines: 2
 				}
 
 			}
-        },
+		},
 		processhtml: {
 			build: {
 				options: {
@@ -174,26 +180,23 @@ grunt.initConfig({
 					'build/index.html': ['build/index.html']
 				}
 			}
-        },
+		},
 
-});
+	});
 
-grunt.loadNpmTasks("grunt-jsbeautifier");
+	require('jit-grunt')(grunt);
 
-grunt.loadNpmTasks('grunt-processhtml');
+	/*
+	grunt.loadNpmTasks("grunt-jsbeautifier");
+	grunt.loadNpmTasks('grunt-processhtml');
+	grunt.loadNpmTasks('grunt-contrib-handlebars');
+	grunt.loadNpmTasks("grunt-jscs");
+	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-csslint');
+	*/
 
-grunt.loadNpmTasks('grunt-contrib-handlebars');
-
-grunt.loadNpmTasks("grunt-jscs");
-
-grunt.loadNpmTasks('grunt-contrib-less');
-
-grunt.loadNpmTasks('grunt-contrib-jshint');
-
-grunt.loadNpmTasks('grunt-contrib-watch');
-
-grunt.loadNpmTasks('grunt-contrib-csslint');
-
-// Default task(s).
-grunt.registerTask('default', ["watch"]);
+	// Default task(s).
+	grunt.registerTask('default', ["watch"]);
 };

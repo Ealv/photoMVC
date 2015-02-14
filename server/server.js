@@ -34,6 +34,15 @@ app.use("/css", function (req, res,next) {
 	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
 });
 
+
+app.use("/locales", function (req, res,next) {
+	var fileName  = req.client._httpMessage.req.originalUrl;
+	var splitting = fileName.split("?");
+	if(splitting.length)
+		fileName = splitting[0];
+	res.sendFile(__dirname + fileName);
+});
+
 app.use("/fonts", function (req, res,next) {
 	res.sendFile(path.join(__dirname, "bower_components/bootstrap",decodeURI(req.client._httpMessage.req.originalUrl)));
 });
@@ -111,5 +120,6 @@ app.use("/server/img/photos/", function (req, res,next) {
 
 app.use(function(req, res, next){
 	res.setHeader('Content-Type', 'text/plain');
+	console.log("not founcd " +req.client._httpMessage.req.originalUrl)
 	res.sendStatus(404);
 });

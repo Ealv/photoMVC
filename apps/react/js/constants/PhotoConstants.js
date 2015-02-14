@@ -12,12 +12,12 @@
 var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
-   PHOTO_CREATE_ALL: null,
-   PHOTO_CREATE: null,
-   PHOTO_CHECK: null,
-   PHOTO_DESTROY: null,
-   PHOTO_DESTROY_CHECKED: null,
-   PHOTO_TOGGLE_CHECK_ALL: null,
-   PHOTO_UNDO_CHECK: null,
-   PHOTO_UPDATE_TEXT: null
+	PHOTO_CREATE_ALL: null,
+	PHOTO_CREATE: null,
+	PHOTO_CHECK: null,
+	PHOTO_DESTROY: null,
+	PHOTO_DESTROY_CHECKED: null,
+	PHOTO_TOGGLE_CHECK_ALL: null,
+	PHOTO_UNDO_CHECK: null,
+	PHOTO_UPDATE_TEXT: null
 });

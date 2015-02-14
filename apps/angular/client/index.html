@@ -2,51 +2,51 @@
 <html ng-app="linkApp">
 
 <head>
-   <meta http-equiv='Content-type' content='text/html; charset=utf-8'>
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>List images</title>
-   <link rel="stylesheet" href="../../css/app.css" />
+	<meta http-equiv='Content-type' content='text/html; charset=utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>List images</title>
+	<link rel="stylesheet" href="../../css/app.css" />
 </head>
 
 <body ng-controller="LinkCtrl">
-   <div id="header-layout" class="navbar-inverse">
-      <button id="toggle-siderbar-header" ng-model="toggletruc" ng-click="toggleSideBar()" class="navbar-toggle toggle-siderbar" type="button">
-         <div class="icon-bar"></div>
-         <div class="icon-bar"></div>
-         <div class="icon-bar"></div>
-      </button>
-   </div>
-   <div id="middle-layout" ng-class="middle" class="container">
-      <div id="sidebar-layout">
-         <button id="toggle-inner-siderbar" ng-click="toggleSideBar()" class="visible-xs-inline navbar-toggle toggle-siderbar" type="button">
-            <div class="icon-bar"></div>
-            <div class="icon-bar"></div>
-            <div class="icon-bar"></div>
-         </button>
-         <div>summary</div>
-      </div>
-      <div id="main-layout">
-         <div id="photoapp">
-            Select All :
-            <input type="checkbox" ng-click="toggleSelectAll()" ng-model="allSelected"></input>
-            Search :
-            <input ng-model="query">
-            <ul id="photos" class="grid-photo">
-               <li ng-model="photo.selected" class="photo-item col-xs-12 col-md-2 col-lg-1 selected" ng-repeat="photo in photos | filter:query">
-                  <a><img class="img-responsive-inv" src="{{photo.url}}">
-                  </a>
-                  <!-- <label>{{photo.text}}</label>
+	<div id="header-layout" class="navbar-inverse">
+		<button id="toggle-siderbar-header" ng-model="toggletruc" ng-click="toggleSideBar()" class="navbar-toggle toggle-siderbar" type="button">
+			<div class="icon-bar"></div>
+			<div class="icon-bar"></div>
+			<div class="icon-bar"></div>
+		</button>
+	</div>
+	<div id="middle-layout" ng-class="middle" class="container">
+		<div id="sidebar-layout">
+			<button id="toggle-inner-siderbar" ng-click="toggleSideBar()" class="visible-xs-inline navbar-toggle toggle-siderbar" type="button">
+				<div class="icon-bar"></div>
+				<div class="icon-bar"></div>
+				<div class="icon-bar"></div>
+			</button>
+			<div>summary</div>
+		</div>
+		<div id="main-layout">
+			<div id="photoapp">
+				Select All :
+				<input type="checkbox" ng-click="toggleSelectAll()" ng-model="allSelected"></input>
+				Search :
+				<input ng-model="query">
+				<ul id="photos" class="grid-photo">
+					<li ng-model="photo.selected" class="photo-item col-xs-12 col-md-2 col-lg-1 selected" ng-repeat="photo in photos | filter:query">
+						<a><img class="img-responsive-inv" src="{{photo.url}}">
+						</a>
+						<!-- <label>{{photo.text}}</label>
 							<input class="toggle" type="checkbox" ng-model="photo.selected" ></input>
 							-->
-               </li>
-            </ul>
-         </div>
-      </div>
-      <div id="blur-layout" ng-click="toggleSideBar()" class="visible-xs-inline"></div>
-   </div>
-   <script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
-   <script type="text/javascript" src="./app.js"></script>
-   <script src="//localhost:35729/livereload.js"></script>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="blur-layout" ng-click="toggleSideBar()" class="visible-xs-inline"></div>
+	</div>
+	<script type="text/javascript" src="./node_modules/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./app.js"></script>
+	<script src="//localhost:35729/livereload.js"></script>
 </body>
 
 </html>

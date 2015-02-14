@@ -1,34 +1,28 @@
-
 @import "variables.less";
-
-@photo-item-width : 110;
-
+@photo-item-width: 110;
 .grid-photo {
 	list-style-type: none;
 }
-
 .photo-item {
 	width: (@photo-item-width) * 1px;
 	height: (@photo-item-width)* 1px;
 	padding: 0;
-
 	border: 1px solid #ddd;
 	border-color: #777777;
-
 	.thumbnail {
 		width: ((@photo-item-width - 1) * 1px);
 		height: ((@photo-item-width - 1)* 1px);
 		background-color: initial;
 		border: 0px;
 	}
-
 	.img-responsive-inv {
 		max-width: ((@photo-item-width - 1) * 1px);
 		max-height: ((@photo-item-width - 1) * 1px);
 		min-width: 100%;
 	}
-
-	label,input,button {
-		display:none;
+	label,
+	input,
+	button {
+		display: none;
 	}
 }
