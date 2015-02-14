@@ -13,16 +13,16 @@
     "grunt-jsbeautifier": "~0.2.8",
     "grunt-jsonlint": "~1.0.4",
     "grunt-processhtml": "~0.3.7",
-    "jit-grunt": "~0.9.1"
+    "jit-grunt": "~0.9.1",
+    "less": "~2.4.0"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.10.0",
     "jshint-stylish": "~1.0.0",
-    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-less": "~1.0.0",
     "grunt-contrib-csslint": "~0.3.1",
-    "grunt-jscs": "~1.2.0",
-    "load-grunt-config": "~0.16.0"
+    "grunt-jscs": "~1.2.0"
   },
   "author": "Eric Alvernhe",
   "license": "BSD-2-Clause"

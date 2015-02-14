@@ -1,26 +1,89 @@
 module.exports = function(grunt) {
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-		less: {
-			development: {
+		//pkg: grunt.file.readJSON('package.json'),
+		watch: {
+			js: {
+				files: ['marionette/src/**/*.js',
+					'react/js/bundle.js', 'angular/client/app.js'
+				],
+				tasks: ['jshint'],
 				options: {
-					paths: ["assets/css"],
-					plugins: [
-						new(require('less-plugin-autoprefix'))({
-							browsers: ["last 2 versions"]
-						})
-						//,new (require('less-plugin-clean-css'))(cleanCssOptions)
-					],
-					compress: true,
-					strictImports: true,
-					strictUnits: true
-						//,
-						//sourceMap:true,
-						//sourceMapURL:"./app.css.map"
-				},
-				files: {
-					"css/app.css": "css/app.less"
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
 				}
+			},
+			html: {
+				files: ['index.html', 'marionette/src/**/*.html',
+					'marionette/src/*.html'
+				],
+				//tasks: ['handlebars'],
+				options: {
+					debounceDelay: 250,
+					spawn: true
+				}
+			},
+			configFiles: {
+				files: ['Gruntfile.js', 'config/*.js'],
+				options: {
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
+				}
+			},
+			less: {
+				files: 'css/*.less',
+				tasks: ['less'],
+				options: {
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
+				}
+			},
+			json: {
+				files: ['locales/**/*.json'],
+				tasks: ['jsonlint'],
+				options: {
+					debounceDelay: 250,
+					spawn: true,
+					interrupt: true
+				}
+			},
+			livereload: {
+				options: {
+					livereload: true
+				},
+				files: [
+					'css/app.css',
+					'marionette/src/**/*.js',
+					'react/js/bundle.js', 'angular/client/app.js',
+					'index.html', 'marionette/src/**/*.html',
+					'marionette/src/*.html',
+					'locales/**/*.json'
+				]
+			}
+		},
+		less: {
+			build: {
+
+				options: {
+					paths: [ // Where to look for files to @import
+						"css/"
+					]
+				},
+				files: [
+					// @see http://gruntjs.com/configuring-tasks#building-the-files-object-dynamically
+					{
+						expand: true, // Enable dynamic expansion.
+						cwd: "apps/css/",
+
+						dest: "apps/css/", // Destination path prefix.
+						src: ['*.less'], // Actual pattern(s) to match.
+						ext: '.css'
+					}, {
+						"css/app.css": "css/app.less"
+					}
+				]
 			}
 		},
 		csslint: {
@@ -53,10 +116,10 @@ module.exports = function(grunt) {
 			options: {
 				reporter: require('jshint-stylish'),
 				/*
-			curly : true,
-			eqeqeq : true,
-			eqnull : true,
-			*/
+				           curly : true,
+				           eqeqeq : true,
+				           eqnull : true,
+				           */
 				browser: true,
 				globals: {
 					jQuery: true
@@ -76,62 +139,15 @@ module.exports = function(grunt) {
 				dest: "marionette/src/prec/precompiled.handlebars.js"
 			}
 		},
-		watch: {
-			js: {
-				files: ['marionette/src/**/*.js', 'react/js/bundle.js', 'angular/client/app.js'],
-				tasks: ['jshint', 'jscs'],
+		processhtml: {
+			build: {
 				options: {
-					debounceDelay: 250,
-					spawn: true,
-					interrupt: true
-				}
-			},
-			html: {
-				files: ['index.html', 'marionette/src/**/*.html', 'marionette/src/*.html', 'react/index.html', 'angular/client/index.html'],
-				//tasks: ['handlebars'],
-				options: {
-					debounceDelay: 250,
-					spawn: true
-				}
-			},
-			configFiles: {
-				files: ['Gruntfile.js', 'config/*.js'],
-				options: {
-					debounceDelay: 250,
-					spawn: true,
-					interrupt: true
-				}
-			},
-			less: {
-				files: 'css/*.less',
-				tasks: ['less'],
-				options: {
-					livereload: 35729
-				}
-			},
-			json: {
-				files: ['locales/**/*.json'],
-				tasks: ['jsonlint'],
-				options: {
-					debounceDelay: 250,
-					spawn: true,
-					interrupt: true
-				}
-			},
-			//css: {
-			//	files: 'css/*.css',
-			//	tasks: ['csslint']
-			//},
-			livereload: {
-				options: {
-					livereload: true
+					process: true,
 				},
-				files: [
-					'css/*.css',
-					'{marionette,react,angular}/**/*.html',
-					'app/**/*.js', 'app/**/*.json',
-					'!app/lib/**', '!app/build/**'
-				]
+				files: {
+					'build/index.html': ['build/index.html']
+				}
+
 			}
 		},
 		jsbeautifier: {
@@ -140,7 +156,7 @@ module.exports = function(grunt) {
 				"react/js/**/*.js",
 				"angular/client/*.js",
 				"!react/js/build.js",
-				"css/*.less",
+				//"css/*.less",
 				"marionette/src/**/*.html",
 				"angular/client/*.html",
 				"Gruntfile.js",
@@ -153,14 +169,14 @@ module.exports = function(grunt) {
 					indentSize: 1,
 					maxPreserveNewlines: 2
 				},
-				css: {
-					fileTypes: [".less"],
-					indentChar: "	",
-					preserve_newlines: true,
-					//breakChainedMethods: false,
-					indentSize: 1,
-					maxPreserveNewlines: 2
-				},
+				//				css: {
+				//					fileTypes: [".less"],
+				//					indentChar: "	",
+				//					preserve_newlines: true,
+				//					//breakChainedMethods: false,
+				//					indentSize: 1,
+				//					maxPreserveNewlines: 2
+				//				},
 				html: {
 					indentChar: "	",
 					indentScripts: "keep",
@@ -168,33 +184,22 @@ module.exports = function(grunt) {
 					indentSize: 1,
 					maxPreserveNewlines: 2
 				}
-
 			}
-		},
-		processhtml: {
-			build: {
-				options: {
-					process: true,
-				},
-				files: {
-					'build/index.html': ['build/index.html']
-				}
-			}
-		},
+		}
 
 	});
 
 	require('jit-grunt')(grunt);
 
 	/*
-	grunt.loadNpmTasks("grunt-jsbeautifier");
-	grunt.loadNpmTasks('grunt-processhtml');
-	grunt.loadNpmTasks('grunt-contrib-handlebars');
-	grunt.loadNpmTasks("grunt-jscs");
-	grunt.loadNpmTasks('grunt-contrib-less');
-	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-csslint');
+		grunt.loadNpmTasks("grunt-jsbeautifier");
+		grunt.loadNpmTasks('grunt-processhtml');
+		grunt.loadNpmTasks('grunt-contrib-handlebars');
+		grunt.loadNpmTasks("grunt-jscs");
+		grunt.loadNpmTasks('grunt-contrib-less');
+		grunt.loadNpmTasks('grunt-contrib-jshint');
+		grunt.loadNpmTasks('grunt-contrib-watch');
+		grunt.loadNpmTasks('grunt-contrib-csslint');
 	*/
 
 	// Default task(s).
