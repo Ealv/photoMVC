@@ -8,5 +8,7 @@ module.exports = function(grunt) {
 		grunt.log.error(err);
 	});
 
+	grunt.registerTask('newjshint', ['newer:jshint:all']);
+
 	grunt.registerTask('default', ["watch"]);
 };

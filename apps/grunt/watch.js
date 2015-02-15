@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 	return {
 		js: {
 			files: ['{marionette,react,angular}/src/**/*.js'],
-			tasks: ['jshint'],
+			tasks: ['newjshint'],
 			options: {
 				debounceDelay: 250,
 				spawn: true,

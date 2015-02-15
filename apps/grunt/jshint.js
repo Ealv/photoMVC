@@ -1,7 +1,10 @@
 module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-newer');
+
 	return {
 		options: {
+
 			reporter: require('jshint-stylish'),
 			/*
 			           curly : true,
@@ -15,7 +18,7 @@ module.exports = function(grunt) {
 		},
 		all: {
 			src: [
-				'marionette,react,angular}/src/**.js',
+				'{marionette,react,angular}/src/**/*.js',
 				'../server/server.js',
 				"Gruntfile.js",
 				//"!angular/client/**",
