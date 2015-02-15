@@ -13,9 +13,15 @@ module.exports = function(grunt) {
 				jQuery: true
 			}
 		},
-		all: ['marionette/src/**/*.js', "Gruntfile.js", "!angular/client/**",
-			"!marionette/src/vendors/require/require.js",
-			"!marionette/src/prec/*"
-		]
+		all: {
+			src: [
+				'marionette,react,angular}/src/**.js',
+				'../server/server.js',
+				"Gruntfile.js",
+				//"!angular/client/**",
+				"!marionette/src/vendors/require/require.js",
+				"!marionette/src/prec/*"
+			]
+		}
 	};
 };

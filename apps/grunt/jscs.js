@@ -13,8 +13,10 @@ module.exports = function(grunt) {
 			"disallowMultipleVarDecl": true,
 			"requireCommaBeforeLineBreak": true
 		},
-		all: ['*/src/**/*.js', "angular/client/**.js", "!angular/client/node_modules/**",
+		all: [
+			'{marionette,react,angular}/src/**.js',
 			"!marionette/src/vendors/require/require.js",
+			"!react/src/**",
 			"!marionette/src/prec/*"
 		]
 	};

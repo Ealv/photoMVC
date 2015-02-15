@@ -7,9 +7,8 @@ module.exports = function(grunt) {
 				process: true,
 			},
 			files: {
-				'build/index.html': ['build/index.html']
+				'marionette/build/index.html': ['marionette/build/index.html']
 			}
-
 		}
 	};
 };

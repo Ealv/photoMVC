@@ -4,9 +4,7 @@ module.exports = function(grunt) {
 
 	return {
 		js: {
-			files: ['marionette/src/**/*.js',
-				'react/js/bundle.js', 'angular/client/app.js'
-			],
+			files: ['{marionette,react,angular}/src/**/*.js'],
 			tasks: ['jshint'],
 			options: {
 				debounceDelay: 250,
@@ -15,8 +13,9 @@ module.exports = function(grunt) {
 			}
 		},
 		html: {
-			files: ['index.html', 'marionette/src/**/*.html',
-				'marionette/src/*.html'
+			files: ['index.html',
+				'{marionette/src/**/*.html',
+				'marionette,react,angular}/src/*.html'
 			],
 			//tasks: ['handlebars'],
 			options: {
@@ -57,10 +56,10 @@ module.exports = function(grunt) {
 			},
 			files: [
 				'css/app.css',
-				'marionette/src/**/*.js',
-				'react/js/bundle.js', 'angular/client/app.js',
-				'index.html', 'marionette/src/**/*.html',
-				'marionette/src/*.html',
+				'{marionette,angular}/src/**/*.js',
+				'react/src/bundle.js',
+				'index.html',
+				'marionette,react,angular}/src/*.html',
 				'locales/**/*.json'
 			]
 		}
