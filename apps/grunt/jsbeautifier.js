@@ -5,6 +5,7 @@ module.exports = function(grunt) {
 	return {
 		files: [
 			"marionette/src/**/*.js",
+			"../server/server.js",
 			"grunt/*.js",
 			"react/js/**/*.js",
 			"angular/client/*.js",
