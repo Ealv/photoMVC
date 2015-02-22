@@ -1,6 +1,5 @@
 var _ = require('underscore');
 
-
 var dbDir = __dirname + "/img/photos/";
 var urlPath = "http://localhost:8000/server/img/photos/";
 var urlPathTHumbs = "http://localhost:8000/server/img/photos/";
@@ -15,6 +14,7 @@ var urlPathTHumbs = "http://localhost:8000/server/img/photos/";
  * @param ?ingredient int ingredient ID (to be defined)
  * @return json {response:{}, status:200}
  */
+
 var getPhotos = function(req, res) {
 	console.log("we are in gethptooss");
 	res.setHeader('Content-Type', 'application/json');
@@ -29,7 +29,7 @@ var getPhotos = function(req, res) {
 
 	walker.on('file', function(root, stat, next) {
 		files.push({
-			id : encodeURI(stat.name),
+			id: encodeURI(stat.name),
 			url: urlPathTHumbs + encodeURI(stat.name),
 			text: stat.name
 		});
@@ -52,10 +52,10 @@ var getPhoto = function(req, res) {
 	var id = req.params.id;
 
 	var fs = require("fs");
-	var fileExist = fs.exists(dbDir + id,function(exist){
-		if(exist)
+	var fileExist = fs.exists(dbDir + id, function(exist) {
+		if (exist)
 			res.status(200).json({
-				id : encodeURI(id),
+				id: encodeURI(id),
 				url: urlPath + encodeURI(id),
 				text: 'blblba  for  ' + encodeURI(id)
 			});
@@ -99,6 +99,7 @@ var addPhoto = function(req, res) {
  * @return json {response:{}, status:204|404}
  */
 var createPhoto = function(req, res) {
+
 	res.setHeader('Content-Type', 'application/json');
 	switch (req.params.id) {
 		case '1':
@@ -157,10 +158,10 @@ var deletePhoto = function(req, res) {
 	var id = req.params.id;
 
 	var fs = require("fs");
-	var fileExist = fs.exists(dbDir + id,function(exist){
-		if(exist)
+	var fileExist = fs.exists(dbDir + id, function(exist) {
+		if (exist)
 			res.status(200).json({
-				id : encodeURI(id),
+				id: encodeURI(id),
 				url: dbDir + encodeURI(id),
 				text: 'blblba  for  ' + encodeURI(id)
 			});

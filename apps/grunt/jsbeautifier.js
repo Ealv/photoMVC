@@ -4,17 +4,23 @@ module.exports = function(grunt) {
 
 	return {
 		files: [
-			"{marionette,react,angular}/src/**/*.js",
-			"../server/server.js",
+			"{marionette,react,angular}/src/**/*.{js,html,json}",
+			"Gruntfile.js",
 			"grunt/*.js",
+			"../package.json",
+			"./package.json",
+			"../server/*.js",
 			"!react/js/build.js",
 			//"css/*.less",
-			"{marionette,angular,react}/src/**/*.html",
-			"Gruntfile.js",
 			'!app/lib/**'
 		],
 		options: {
 			js: {
+				indentChar: "	",
+				indentSize: 1,
+				maxPreserveNewlines: 2
+			},
+			json: {
 				indentChar: "	",
 				indentSize: 1,
 				maxPreserveNewlines: 2

@@ -1,12 +1,12 @@
 {
-  "name": "all-photo",
-  "version": "0.0.0",
-  "description": "Try to show photos with angular",
-  "dependencies": {
-    "angular": "~1.4.0"
+	"name": "all-photo",
+	"version": "0.0.0",
+	"description": "Try to show photos with angular",
+	"dependencies": {
+		"angular": "~1.4.0"
 
-  },
-  "devDependencies": {},
-  "author": "Eric Alvernhe",
-  "license": "BSD-2-Clause"
+	},
+	"devDependencies": {},
+	"author": "Eric Alvernhe",
+	"license": "BSD-2-Clause"
 }
