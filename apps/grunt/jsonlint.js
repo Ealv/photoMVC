@@ -4,10 +4,10 @@ module.exports = function(grunt) {
 	return {
 		sample: {
 			src: ['locales/**/*.json',
-			"{angular,marionette,react}/package.json",
-			"{angular,marionette,react}/bower.json",
-			"package.json",
-			"../package.json"
+				"{angular,marionette,react}/package.json",
+				"{angular,marionette,react}/bower.json",
+				"package.json",
+				"../package.json"
 			]
 		}
 	};

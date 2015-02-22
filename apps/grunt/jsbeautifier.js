@@ -4,17 +4,13 @@ module.exports = function(grunt) {
 
 	return {
 		files: [
-			"marionette/src/**/*.js",
+			"{marionette,react,angular}/src/**/*.js",
 			"../server/server.js",
 			"grunt/*.js",
-			"react/js/**/*.js",
-			"angular/client/*.js",
 			"!react/js/build.js",
 			//"css/*.less",
-			"marionette/src/**/*.html",
-			"angular/client/*.html",
+			"{marionette,angular,react}/src/**/*.html",
 			"Gruntfile.js",
-			"react/*.html",
 			'!app/lib/**'
 		],
 		options: {

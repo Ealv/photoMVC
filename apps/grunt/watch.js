@@ -14,8 +14,8 @@ module.exports = function(grunt) {
 		},
 		html: {
 			files: ['index.html',
-				'{marionette/src/**/*.html',
-				'marionette,react,angular}/src/*.html'
+				'{marionette,angular}/src/**/*.html',
+				'{marionette,react,angular}/src/*.html'
 			],
 			//tasks: ['handlebars'],
 			options: {
@@ -63,6 +63,5 @@ module.exports = function(grunt) {
 				'locales/**/*.json'
 			]
 		}
-
 	};
 };

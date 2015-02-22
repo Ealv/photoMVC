@@ -11,11 +11,9 @@ module.exports = function(grunt) {
 				],
 				compress: true
 			},
-			files: [
-				 {
-					"css/app.css": "css/app.less"
-				}
-			]
+			files: [{
+				"css/app.css": "css/app.less"
+			}]
 		}
 	};
 };

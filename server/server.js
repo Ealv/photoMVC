@@ -122,7 +122,7 @@ app.use("/server/img/photos/", function(req, res, next) {
 		console.dir(exception);
 		res.setHeader('Content-Type', 'text/plain');
 		res.sendStatus(404);
-}
+	}
 	//hiii dirty hack...
 	//__dirname = bebforeName;
 });
