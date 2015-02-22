@@ -25,8 +25,8 @@ var captureScreen = function(browser,name,element) {
 
 var capabilities = {
 	//silent: true, // maybe output more for tests?
-	browserName: 'phantomjs',
-	//browserName: 'firefox',
+	//browserName: 'phantomjs',
+	browserName: 'firefox',
 	javascriptEnabled: true,
 	takesScreenshot: true,
 	databaseEnabled: false,
@@ -50,7 +50,6 @@ testLogin = function(){
 		//login form is ok
 		browser.findElement(driver.By.id('user-input'));
 		browser.findElement(driver.By.id('password-input'));
-
 		browser.findElement(driver.By.id('login-button'));
 
 		//browser.wait(function() {return browser.executeScript(function () {return !!document.querySelector('#login-button');});}, 2000);
@@ -85,12 +84,12 @@ testApp = function(){
 					function waitUntilAllimagesAreDownloaded() {
 						return browser.executeScript(function () {
 							//return false;
-							var allImages = document.querySelectorAll('.photo-item .thumbnail img');
+							var allImages = document.querySelectorAll('.photo-item img');
 							//2 convert it to a propoer array (for following sugar method "some")
 							var allImages = [].slice.call(allImages);
 							//3 check for all images to be loaded with the "some" method (image is loaded if it has width)
 							return allImages.some(function(image){return (image.offsetWidth > 0);});
-				})}, 4000);
+				})}, 7000);
 				//browser.sleep(1000);
 				console.log("capture ing home ");
 				captureScreen(browser,pathScreenshots + "/home.png");
@@ -99,7 +98,7 @@ testApp = function(){
 	});
 };
 
-var library = "marionette";
+var library = "angular";
 var pathScreenshots = "screenshots/" + library;
 
 //test the login page

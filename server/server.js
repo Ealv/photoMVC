@@ -34,7 +34,7 @@ var appsDir = path.join(__dirname, '..', "apps");
 
 app.get('/', function(req, res) {
 	//console.log("ask for "  + req.client._httpMessage.req.originalUrl)
-	res.sendFile(__dirname + "/index.html");
+	res.sendFile(appsDir + "/index.html");
 });
 
 app.use("/angular/", function(req, res, next) {
