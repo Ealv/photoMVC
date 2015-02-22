@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 				jQuery: true
 			}
 		},
-		all: ['{marionette,angular,react}/src/**/*.js', "Gruntfile.js", 
+		all: ['{marionette,angular,react}/src/**/*.js', "Gruntfile.js",
 			"!marionette/src/vendors/require/require.js",
 			"!marionette/src/prec/*"
 		]

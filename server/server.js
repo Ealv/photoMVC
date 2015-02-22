@@ -5,9 +5,32 @@ var server = require('http').createServer(app);
 server.listen(8000);
 
 var path = require("path");
+var _ = require('underscore');
 
-//resolving path on apps 
-__dirname = path.join(__dirname, '..', "apps");
+///////////////////////////////service server ////////////////////////////////////:
+var services = require('./services');
+app.route('/services/photos/:id')
+	.get(function(req, res) {
+		services.actions.getPhoto(req, res);	
+			//res.send('Get a random book');
+	})
+	.post(function(req, res) {
+		services.actions.addPhoto(req, res);
+	})
+	.put(function(req, res) {
+		services.actions.updatePhoto(req, res);
+	}).delete(function(req, res) {
+		services.actions.deletePhoto(req, res);
+	});
+
+app.route('/services/photos/')
+	.get(function(req, res) {
+		services.actions.getPhotos(req, res);
+	});
+
+///////////////////////////////static files server////////////////////////////////////:
+
+var appsDir = path.join(__dirname, '..', "apps");
 
 app.get('/', function(req, res) {
 	//console.log("ask for "  + req.client._httpMessage.req.originalUrl)
@@ -15,23 +38,23 @@ app.get('/', function(req, res) {
 });
 
 app.use("/angular/", function(req, res, next) {
-	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
+	res.sendFile(appsDir + req.client._httpMessage.req.originalUrl);
 });
 
 app.use("/marionette/", function(req, res, next) {
-	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
+	res.sendFile(appsDir + req.client._httpMessage.req.originalUrl);
 });
 
 app.use("/react/", function(req, res, next) {
-	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
+	res.sendFile(appsDir + req.client._httpMessage.req.originalUrl);
 });
 
 app.use("/apps/", function(req, res, next) {
-	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
+	res.sendFile(appsDir + req.client._httpMessage.req.originalUrl);
 });
 
 app.use("/css", function(req, res, next) {
-	var fileName = __dirname + req.client._httpMessage.req.originalUrl;
+	var fileName = appsDir + req.client._httpMessage.req.originalUrl;
 	var splitting = fileName.split("?");
 	if (splitting.length)
 		fileName = splitting[0];
@@ -44,43 +67,21 @@ app.use("/locales", function(req, res, next) {
 	var splitting = fileName.split("?");
 	if (splitting.length)
 		fileName = splitting[0];
-	res.sendFile(__dirname + fileName);
+	res.sendFile(appsDir + fileName);
 });
 
 app.use("/fonts", function(req, res, next) {
-	res.sendFile(path.join(__dirname, "bower_components/bootstrap", decodeURI(req.client._httpMessage.req.originalUrl)));
+	res.sendFile(path.join(appsDir, "bower_components/bootstrap", decodeURI(req.client._httpMessage.req.originalUrl)));
 });
 
 app.use("/assets", function(req, res, next) {
-	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
+	res.sendFile(appsDir + req.client._httpMessage.req.originalUrl);
 });
 
 app.use("/bower_components/", function(req, res, next) {
-	res.sendFile(__dirname + req.client._httpMessage.req.originalUrl);
+	res.sendFile(appsDir + req.client._httpMessage.req.originalUrl);
 });
 
-app.use("/server/photos", function(req, res, next) {
-	res.setHeader('Content-Type', 'application/json');
-	var walk = require('walk');
-	var files = {};
-
-	// Walker options
-	var walker = walk.walk('../server/img/photos/', {
-		followLinks: false
-	});
-
-	walker.on('file', function(root, stat, next) {
-		files[stat.name] = {
-			url: '/server/img/photos/' + encodeURI(stat.name),
-			text: stat.name
-		};
-		next();
-
-	});
-	walker.on('end', function() {
-		res.send(files);
-	});
-});
 
 app.use("/server/img/photos/", function(req, res, next) {
 	try {

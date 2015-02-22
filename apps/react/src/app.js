@@ -5,9 +5,9 @@ var BootStrap = require('../../bower_components/bootstrap');
 var PhotoApp = require('./components/PhotoApp.react');
 
 var request = require('superagent');
-var url = "/server/photos";
+var url = "http://localhost:8000/services/photos/";
 
-var myReq = request.post(url).end(function(response) {
+var myReq = request.get(url).end(function(response) {
 	var PhotoActions = require('./actions/PhotoActions');
 	PhotoActions.createAll(response.body);
 });

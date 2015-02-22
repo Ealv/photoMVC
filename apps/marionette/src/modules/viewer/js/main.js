@@ -32,7 +32,7 @@ define(['models/photoitem',
 				this.collection = new Backbone.Collection({
 					model: PhotoItem
 				});
-				this.collection.url = '/server/photos';
+				this.collection.url = '/services/photos';
 				this.collection.parse = function(data) {
 					return _.values(data);
 				};
