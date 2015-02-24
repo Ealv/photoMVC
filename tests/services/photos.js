@@ -48,7 +48,7 @@ describe('Routing', function() {
 	});
 
 	describe('DELETE an  photo', function() {
-		var idPhoto = "IMG_20131219_141016.jpg";
+		var idPhoto = "photo.JPG";
 		it('Should return a 200  ', function(done) {
 			request(url)
 				.delete('/services/photos/' + idPhoto)
