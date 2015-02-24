@@ -4,7 +4,10 @@ module.exports = function(grunt) {
 
 	return {
 		js: {
-			files: ['{marionette,react,angular}/src/**/*.js'],
+			files: ['{marionette,react,angular}/src/**/*.js',
+				"../server/*.js",
+				"../tests/{ui,services}/*.js"
+			],
 			tasks: ['newjshint'],
 			options: {
 				debounceDelay: 250,

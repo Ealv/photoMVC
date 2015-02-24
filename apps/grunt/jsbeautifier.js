@@ -10,6 +10,8 @@ module.exports = function(grunt) {
 			"../package.json",
 			"./package.json",
 			"../server/*.js",
+			"!react/src/build.js",
+			"!react/src/app.js",
 			"!react/js/build.js",
 			//"css/*.less",
 			'!app/lib/**'

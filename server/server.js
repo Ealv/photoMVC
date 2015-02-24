@@ -7,7 +7,7 @@ server.listen(8000);
 var path = require("path");
 var _ = require('underscore');
 
-///////////////////////////////service server ////////////////////////////////////:
+///////////////////////////////service server ////////////////////////////////////
 var services = require('./services');
 app.route('/services/photos/:id')
 	.get(function(req, res) {
@@ -28,7 +28,7 @@ app.route('/services/photos/')
 		services.actions.getPhotos(req, res);
 	});
 
-///////////////////////////////static files server////////////////////////////////////:
+///////////////////////////////static files server////////////////////////////////////
 
 var appsDir = path.join(__dirname, '..', "apps");
 

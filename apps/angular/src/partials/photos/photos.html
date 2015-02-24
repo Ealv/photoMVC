@@ -4,10 +4,8 @@
 	Search :
 	<input ng-model="query">
 	<ul id="photos" class="grid-photo">
-		<li  ng-repeat="photo in photos | filter:query" 
-		ng-model="photo.selected" 
-		class="photo-item col-xs-12 col-md-2 col-lg-1 selected">
-			<a ui-sref="viewPhoto({id:photo.id})" ><img class="img-responsive-inv" src="{{photo.url}}">
+		<li ng-repeat="photo in photos | filter:query" ng-model="photo.selected" class="photo-item col-xs-12 col-md-2 col-lg-1 selected">
+			<a ui-sref="viewPhoto({id:photo.id})"><img class="img-responsive-inv" src="{{photo.url}}">
 			</a>
 		</li>
 	</ul>
