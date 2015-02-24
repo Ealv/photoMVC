@@ -1,0 +1,21 @@
+<table class="table burgertable">
+	<tr>
+		<td>
+			<h3>Details for {{photo.title}}</h3>
+		</td>
+		<td>
+			<img src="{{photo.url}}">
+		</td>
+	</tr>
+	<tr>
+		<td>Title</td>
+		<td>{{photo.title}}</td>
+	</tr>
+	<tr>
+		<td>Text</td>
+		<td>{{photo.text}}</td>
+	</tr>
+</table>
+<div>
+	<a class="btn btn-primary" ui-sref="editPhoto({id:photo.id})">Edit</a>
+</div>

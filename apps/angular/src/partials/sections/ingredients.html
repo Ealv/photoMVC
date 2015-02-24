@@ -1,0 +1,34 @@
+<div class="row">
+	Customize our Ingredients ? </h3>
+	</td>
+	</tr>
+</div>
+
+<div class="row">
+	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		<div ng-repeat="listCollpased in listCollpasedData" class="panel panel-default">
+			<div class="panel-heading" role="tab" id="heading{{listCollpased.name}}">
+				<h4 class="panel-title text-center">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse{{listCollpased.name}}" aria-expanded="true" aria-controls="collapse{{listCollpased.name}}">
+         {{listCollpased.name}}
+        </a>
+      </h4>
+			</div>
+			<div id="collapse{{listCollpased.name}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{listCollpased.name}}">
+				<div class="panel-body">
+
+					<table class="ingredient-list table">
+
+						<tr ng-repeat="ingredient in listCollpased.child">
+							<td>{{ingredient.title}}</td>
+							<td>
+								<a class="btn btn-primary" ui-sref="viewIngredient({id:ingredient.id})">View</a>
+								<a class="btn btn-danger" ng-click="deleteIngredient(ingredient)">Delete</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

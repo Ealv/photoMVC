@@ -1,0 +1,28 @@
+<table class="table burgertable">
+	<tr>
+		<td>
+			<h3>Details for {{ingredient.title}}</h3>
+		</td>
+	</tr>
+	<tr>
+		<td>Ingredient Title</td>
+		<td>{{ingredient.title}}</td>
+	</tr>
+	<tr>
+		<td>Ingredient Type</td>
+		<td>
+			{{ingredient.IngredientType.name}}
+		</td>
+	</tr>
+	<tr>
+		<td>Abstract</td>
+		<td>{{ingredient.abstract}}</td>
+	</tr>
+	<tr>
+		<td>Spice Level</td>
+		<td>{{ingredient.spiceLevel}}</td>
+	</tr>
+</table>
+<div>
+	<a class="btn btn-primary" ui-sref="editIngredient({id:ingredient._id})">Edit</a>
+</div>
