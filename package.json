@@ -6,7 +6,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha  --recursive -R xunit tests/services"
+    "test": "mocha  --recursive -R xunit tests/services"
   },
   "repository": {
     "type": "git",
