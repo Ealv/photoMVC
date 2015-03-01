@@ -25,8 +25,8 @@ var captureScreen = function(browser,name,element) {
 
 var capabilities = {
 	//silent: true, // maybe output more for tests?
-	//browserName: 'phantomjs',
-	browserName: 'firefox',
+	browserName: 'phantomjs',
+	//browserName: 'firefox',
 	javascriptEnabled: true,
 	takesScreenshot: true,
 	databaseEnabled: false,
